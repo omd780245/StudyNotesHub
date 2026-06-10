@@ -160,7 +160,22 @@ h1{
 </head>
 
 <body>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
   <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyCEmCezyyc0mq03KXi89raWu8iO13pfbYk",
+  authDomain: "study-notes-hub-7ac7e.firebaseapp.com",
+  databaseURL: "https://study-notes-hub-7ac7e-default-rtdb.firebaseio.com",
+  projectId: "study-notes-hub-7ac7e",
+  storageBucket: "study-notes-hub-7ac7e.firebasestorage.app",
+  messagingSenderId: "286577611912",
+  appId: "1:286577611912:web:6efb8badfcb473b749fb3d",
+  measurementId: "G-VHN6Y83HZ5"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
 function openNav(){
 document.getElementById("sidebar").style.width="250px";
@@ -188,6 +203,22 @@ window.onload = function(){
     if(theme === "dark"){
         document.body.classList.add("dark-mode");
     }
+
+    const visitorsRef = db.ref("visitors");
+
+if(!localStorage.getItem("visited")){
+
+    visitorsRef.transaction(function(currentCount){
+        return (currentCount || 0) + 1;
+    });
+
+    localStorage.setItem("visited","yes");
+}
+
+visitorsRef.on("value", function(snapshot){
+    document.getElementById("visitorCount").innerText =
+        snapshot.val() + " Visitors";
+});
 
 }
 
@@ -296,6 +327,11 @@ omd780245@gmail.com
 <p>Made by Om</p>
 
 </div>
+<div class="about">
+<h2>👥 Visitors</h2>
+<p id="visitorCount">Loading...</p>
+</div>
+
 <div class="footer">
 
 <p>© 2026 Study Notes Hub</p>
