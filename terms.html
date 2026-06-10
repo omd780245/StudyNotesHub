@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+body{
+    font-family:Arial,sans-serif;
+    background-color:#f0f8ff;
+    margin:0;
+    text-align:center;
+}
+
+.navbar{
+    background-color:darkblue;
+    padding:15px 10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    position:relative;
+    flex-wrap:wrap;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+}
+
+h1{
+    color:darkblue;
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.cbse{
+    color:green;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.about{
+    width:85%;
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px gray;
+}
+
+.class-card{
+    background:white;
+    width:80%;
+    max-width:300px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px gray;
+}
+
+.class-card a{
+    text-decoration:none;
+    color:white;
+    background:blue;
+    padding:12px 25px;
+    border-radius:8px;
+    display:inline-block;
+}
+
+.footer{
+    margin-top:40px;
+    padding:20px;
+    background:darkblue;
+    color:white;
+}
+.sidebar{
+    height:100%;
+    width:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#111;
+    overflow-x:hidden;
+    transition:0.3s;
+    padding-top:60px;
+    z-index:1000;
+}
+
+.sidebar a{
+    padding:12px 25px;
+    text-decoration:none;
+    font-size:20px;
+    color:white;
+    display:block;
+}
+
+.sidebar a:hover{
+    background:#333;
+}
+
+.closebtn{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:35px;
+}
+
+.menu-btn{
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode h1{
+    color:white;
+}
+
+.dark-mode .about,
+.dark-mode .class-card{
+    background:#1f1f1f;
+    color:white;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer{
+    background:black;
+}
+.logo-section{
+    margin-top:20px;
+    margin-bottom:0px;
+}
+
+.logo-section img{
+    display:block;
+    margin:0 auto 5px auto;
+}
+
+</style>
+    <title>Terms & Conditions - Study Notes Hub</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+  <div id="sidebar" class="sidebar">
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<a href="#" onclick="toggleDarkMode()">🌙 Dark Mode</a>
+
+<a href="index.html">🏠 Home</a>
+
+</div>
+
+<div class="navbar">
+
+<span class="menu-btn" onclick="openNav()">☰</span>
+
+<a href="index.html">Home</a>
+
+<a href="Class10.html">Class 10</a>
+
+<a href="Class11.html">Class 11</a>
+
+<a href="Class12.html">Class 12</a>
+
+</div>
+
+<div class="logo-section">
+<img src="logo.png" alt="Logo" width="250">
+<h1>Study Notes Hub</h1>
+</div>
+  <div class="about">
+
+<h1>Terms & Conditions</h1>
+
+<p><strong>Last Updated:</strong> June 2026</p>
+
+<h2>Acceptance of Terms</h2>
+
+<p>
+By using Study Notes Hub, you agree to follow these Terms & Conditions.
+</p>
+
+<h2>Educational Purpose</h2>
+
+<p>
+All notes, study materials and resources on this website are provided for educational purposes only.
+</p>
+
+<h2>Content Accuracy</h2>
+
+<p>
+We strive to provide accurate and useful study materials. However, we do not guarantee that all information is completely error-free.
+</p>
+
+<h2>User Responsibility</h2>
+
+<p>
+Users should verify important information from official textbooks, schools, boards and other reliable sources.
+</p>
+
+<h2>Changes to Content</h2>
+
+<p>
+Study Notes Hub may update, modify or remove content at any time without prior notice.
+</p>
+
+<h2>Copyright</h2>
+
+<p>
+All content published on Study Notes Hub is intended for educational use. Users may not copy or republish website content without permission.
+</p>
+
+<h2>Contact Us</h2>
+
+<p>
+📧 <a href="mailto:omd780245@gmail.com">omd780245@gmail.com</a>
+</p>
+
+</div>
+
+<div class="footer">
+<p>© 2026 Study Notes Hub</p>
+<p>Made by Das Group</p>
+</div>
+<script>
+
+function openNav(){
+document.getElementById("sidebar").style.width="250px";
+}
+
+function closeNav(){
+document.getElementById("sidebar").style.width="0";
+}
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+    }else{
+        localStorage.setItem("theme","light");
+    }
+}
+
+window.onload = function(){
+
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+        document.body.classList.add("dark-mode");
+    }
+
+}
+
+</script>
+</body>
+</html>
