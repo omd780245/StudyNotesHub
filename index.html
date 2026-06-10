@@ -15,14 +15,19 @@ body{
 
 .navbar{
     background-color:darkblue;
-    padding:15px;
+    padding:15px 10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    position:relative;
+    flex-wrap:wrap;
 }
 
 .navbar a{
     color:white;
     text-decoration:none;
-    margin:10px;
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
 }
 
@@ -77,14 +82,102 @@ h1{
     background:darkblue;
     color:white;
 }
+.sidebar{
+    height:100%;
+    width:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#111;
+    overflow-x:hidden;
+    transition:0.3s;
+    padding-top:60px;
+    z-index:1000;
+}
 
+.sidebar a{
+    padding:12px 25px;
+    text-decoration:none;
+    font-size:20px;
+    color:white;
+    display:block;
+}
+
+.sidebar a:hover{
+    background:#333;
+}
+
+.closebtn{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:35px;
+}
+
+.menu-btn{
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode h1{
+    color:white;
+}
+
+.dark-mode .about,
+.dark-mode .class-card{
+    background:#1f1f1f;
+    color:white;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer{
+    background:black;
+}
 </style>
 
 </head>
 
 <body>
+  <script>
 
+function openNav(){
+document.getElementById("sidebar").style.width="250px";
+}
+
+function closeNav(){
+document.getElementById("sidebar").style.width="0";
+}
+
+function toggleDarkMode(){
+document.body.classList.toggle("dark-mode");
+}
+
+</script>
+<div id="sidebar" class="sidebar">
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<a href="#" onclick="toggleDarkMode()">🌙 Dark Mode</a>
+
+<a href="#faq">❓ FAQs</a>
+
+<a href="#contact">📞 Contact Us</a>
+
+<a href="#about">ℹ️ About Us</a>
+
+</div>
 <div class="navbar">
+
+<span class="menu-btn" onclick="openNav()">☰</span>
 
 <a href="index.html">Home</a>
 
@@ -106,7 +199,7 @@ Free Study Materials for Students
 CBSE Notes for Classes 10, 11 & 12
 </p>
 
-<div class="about">
+<div class="about" id="about">
 
 <h2>About This Website</h2>
 
@@ -148,7 +241,25 @@ content for Classes 10, 11 and 12.
 <a href="Class12.html">Open</a>
 
 </div>
+<div class="about" id="faq">
 
+<h2>Frequently Asked Questions</h2>
+
+<p><b>Are notes free?</b><br>Yes, all notes are free.</p>
+
+<p><b>Which classes are available?</b><br>Classes 10, 11 and 12.</p>
+
+</div>
+
+<div class="about" id="contact">
+
+<h2>Contact Us</h2>
+
+<p>Email: studynoteshub@example.com</p>
+
+<p>Made by Om</p>
+
+</div>
 <div class="footer">
 
 <p>© 2026 Study Notes Hub</p>
