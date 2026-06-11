@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Class 10 Quiz | Study Notes Hub</title>
+</head>
+<style>
+.navbar{
+    background-color:darkblue;
+    padding:15px 10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    position:relative;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.menu-btn{
+    color:white;
+    font-size:32px;
+    cursor:pointer;
+}
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode #quizArea{
+    background:#1f1f1f;
+    color:white;
+}
+
+.dark-mode .chapter-btn{
+    background:#2b2b2b;
+    color:white;
+}
+
+.dark-mode #quizArea button{
+    background:#2b2b2b;
+    color:white;
+}
+.chapter-btn{
+    background:white;
+    border:none;
+    border-radius:12px;
+    padding:12px 18px;
+    margin:5px;
+    font-size:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    cursor:pointer;
+}
+body{
+    background:#dfe8ef;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+}
+  #quizArea{
+    background:white;
+    max-width:500px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 10px lightgray;
+}
+
+#quizArea{
+    background:white;
+    max-width:600px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+#quizArea button{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#f5f5f5;
+    cursor:pointer;
+}
+
+#quizArea button:hover{
+    background:#e8f0fe;
+}
+</style>
+<body onload="loadTheme()">
+<div class="navbar">
+
+<span class="menu-btn" onclick="openNav()">☰</span>
+
+<a href="index.html">Home</a>
+
+<a href="quiz.html">Quiz</a>
+<a href="mcq.html">MCQ</a>
+<a href="pyq.html">PYQs</a>
+
+</div>
+<h1>📝 Class 10 Quiz</h1>
+
+<p>Select a chapter:</p>
+
+<button class="chapter-btn" onclick="loadQuiz('letter')">A Letter to God</button>
+<button class="chapter-btn" onclick="loadQuiz('mandela')">Nelson Mandela</button>
+
+<button class="chapter-btn" onclick="loadQuiz('flying')">Two Stories About Flying</button>
+
+<button class="chapter-btn" onclick="loadQuiz('anne')">Anne Frank</button>
+
+<hr>
+
+<div id="quizArea">
+
+<h2>📚 Start a Quiz</h2>
+
+<p>
+Select a chapter above to begin the quiz.
+</p>
+
+</div>
+<script>
+  let currentQuestion = 0;
+let score = 0;
+const letterQuiz = [
+
+{
+question:"Who wrote A Letter to God?",
+options:["Nelson Mandela","G. L. Fuentes","Anne Frank","Lencho"],
+answer:1
+},
+
+{
+question:"Who was the main character of the story?",
+options:["Mandela","Lencho","Postmaster","Gregorio"],
+answer:1
+}
+,
+{
+question:"What destroyed Lencho's crops?",
+options:["Flood","Earthquake","Hailstorm","Drought"],
+answer:2
+},
+
+{
+question:"To whom did Lencho write a letter?",
+options:["Postmaster","God","Mayor","Friend"],
+answer:1
+},
+
+{
+question:"How much money did Lencho ask for?",
+options:["50 pesos","70 pesos","100 pesos","200 pesos"],
+answer:2
+},
+
+{
+question:"Who collected money for Lencho?",
+options:["Villagers","Teacher","Postmaster","Mayor"],
+answer:2
+},
+
+{
+question:"How much money did Lencho actually receive?",
+options:["70 pesos","100 pesos","50 pesos","30 pesos"],
+answer:0
+},
+
+{
+question:"What did Lencho think about the missing money?",
+options:["Lost in mail","Taken by post office employees","Taken by God","Stolen by villagers"],
+answer:1
+},
+
+{
+question:"What kind of farmer was Lencho?",
+options:["Rich","Careless","Hardworking","Lazy"],
+answer:2
+},
+
+{
+question:"Why did Lencho need money?",
+options:["To buy land","To help family","To sow his fields again","To travel"],
+answer:2
+}
+];
+
+function loadQuiz(chapter){
+
+let html = "";
+
+if(chapter === "letter"){
+
+currentQuestion = 0;
+score = 0;
+showLetterQuestion();
+return;
+}
+if(chapter === "mandela"){
+
+html = `
+<h2>Nelson Mandela Quiz</h2>
+
+<p>1. How many years did Nelson Mandela spend in prison?</p>
+
+<input type="radio" name="q1" value="wrong"> 15 years<br>
+<input type="radio" name="q1" value="correct"> 27 years<br>
+<input type="radio" name="q1" value="wrong"> 30 years<br>
+<input type="radio" name="q1" value="wrong"> 35 years<br>
+
+<br>
+
+<button onclick="checkAnswer()">Submit</button>
+
+<p id="result"></p>
+
+`;
+}
+
+document.getElementById("quizArea").innerHTML = html;
+
+}
+function checkAnswer(){
+
+let answer =
+document.querySelector('input[name="q1"]:checked');
+
+if(!answer){
+alert("Please select an answer");
+return;
+}
+
+if(answer.value === "correct"){
+document.getElementById("result").innerHTML =
+"✅ Correct Answer";
+}else{
+document.getElementById("result").innerHTML =
+"❌ Wrong Answer";
+}
+
+}
+function showLetterQuestion(){
+
+let q = letterQuiz[currentQuestion];
+
+let html = `
+<h2>A Letter to God Quiz</h2>
+
+<p>Question ${currentQuestion + 1} of ${letterQuiz.length}</p>
+<div style="background:#ddd;border-radius:10px;height:12px;margin:15px 0;">
+  <div style="
+    background:#1e88e5;
+    width:${((currentQuestion+1)/letterQuiz.length)*100}%;
+    height:12px;
+    border-radius:10px;
+  "></div>
+</div>
+
+<p>${q.question}</p>
+
+<button onclick="checkLetterAnswer(0)">${q.options[0]}</button><br><br>
+
+<button onclick="checkLetterAnswer(1)">${q.options[1]}</button><br><br>
+
+<button onclick="checkLetterAnswer(2)">${q.options[2]}</button><br><br>
+
+<button onclick="checkLetterAnswer(3)">${q.options[3]}</button><br><br>
+
+`;
+
+document.getElementById("quizArea").innerHTML = html;
+
+}
+function checkLetterAnswer(selected){
+
+if(selected === letterQuiz[currentQuestion].answer){
+score++;
+}
+
+currentQuestion++;
+
+if(currentQuestion < letterQuiz.length){
+
+showLetterQuestion();
+
+}else{
+
+let percent = Math.round((score / letterQuiz.length) * 100);
+
+document.getElementById("quizArea").innerHTML = `
+<h2>🎉 Quiz Completed</h2>
+
+<p><b>Score:</b> ${score}/${letterQuiz.length}</p>
+
+<p><b>Percentage:</b> ${percent}%</p>
+
+<button onclick="loadQuiz('letter')">
+🔄 Retake Quiz
+</button>
+`;
+
+}
+
+}
+function loadTheme(){
+
+let theme = localStorage.getItem("theme");
+
+if(theme === "dark"){
+document.body.classList.add("dark-mode");
+}
+
+}
+</script>
+</body>
+
+</html>
