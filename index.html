@@ -64,12 +64,17 @@ h1{
 
 .class-card{
     background:white;
-    width:80%;
-    max-width:300px;
+    width:85%;
+    max-width:450px;
     margin:20px auto;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px gray;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.class-card:hover{
+    transform:translateY(-5px);
 }
 
 .class-card a{
@@ -79,6 +84,11 @@ h1{
     padding:12px 25px;
     border-radius:8px;
     display:inline-block;
+    transition:0.3s;
+}
+
+.class-card a:hover{
+    transform:scale(1.05);
 }
 
 .footer{
@@ -486,6 +496,7 @@ document.getElementById("searchResults").innerHTML = results;
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 <a href="#" onclick="toggleDarkMode()">🌙 Dark Mode</a>
+<a href="#">📲 Install App</a>
 
 <a href="#faq">❓ FAQs</a>
 
@@ -508,17 +519,19 @@ document.getElementById("searchResults").innerHTML = results;
 
 </div>
 <div class="logo-section">
-<img src="logo.png" alt="Logo" width="250">
-<h1>Study Notes Hub</h1>
-</div>
+<img src="logo.png" alt="Logo" width="220">
+
+<h1>📚 Study Notes Hub</h1>
 
 <p class="subtitle">
-Free Study Materials for Students
+Free Notes, Important Questions & Study Materials
 </p>
 
 <p class="cbse">
-CBSE Notes for Classes 10, 11 & 12
+CBSE Classes 10, 11 & 12
 </p>
+
+</div>
 <div class="about">
 
 <h2>🔍 Search Notes</h2>
@@ -530,10 +543,6 @@ style="width:80%;padding:12px;font-size:16px;border-radius:8px;border:1px solid 
 
 <br><br>
 
-<button onclick="searchNotes()"
-style="padding:10px 20px;background:blue;color:white;border:none;border-radius:8px;">
-Search
-</button>
 <div id="searchResults"></div>
 
 </div>
@@ -606,6 +615,19 @@ omd780245@gmail.com
 <div class="about">
 <h2>👥 Visitors</h2>
 <p id="visitorCount">Loading...</p>
+</div>
+<div class="about">
+
+<h2>📊 Study Notes Hub</h2>
+
+<p>📚 Classes Covered: 3</p>
+
+<p>📖 Subjects Available: 14+</p>
+
+<p>📲 Installable App: Yes</p>
+
+<p>🌙 Dark Mode: Available</p>
+
 </div>
 
 <div class="footer">
