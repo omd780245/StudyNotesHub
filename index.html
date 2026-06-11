@@ -221,7 +221,236 @@ visitorsRef.on("value", function(snapshot){
 });
 
 }
+function searchNotes(){
 
+let query = document.getElementById("searchBox").value.toLowerCase();
+
+if(query === ""){
+document.getElementById("searchResults").innerHTML = "";
+return;
+}
+
+let data = [
+
+{name:"The Last Lesson",link:"English12.html"},
+{name:"Lost Spring",link:"English12.html"},
+{name:"Deep Water",link:"English12.html"},
+{name:"The Rattrap",link:"English12.html"},
+{name:"Indigo",link:"English12.html"},
+{name:"Poets and Pancakes",link:"English12.html"},
+{name:"The Interview",link:"English12.html"},
+{name:"Going Places",link:"English12.html"},
+
+{name:"The Portrait of a Lady",link:"English11.html"},
+{name:"Landscape of the Soul",link:"English11.html"},
+{name:"Adventure",link:"English11.html"},
+{name:"Silk Road",link:"English11.html"},
+{name:"Relations and Functions",link:"Math12.html"},
+{name:"Inverse Trigonometric Functions",link:"Math12.html"},
+{name:"Matrices",link:"Math12.html"},
+{name:"Determinants",link:"Math12.html"},
+{name:"Continuity and Differentiability",link:"Math12.html"},
+{name:"Application of Derivatives",link:"Math12.html"},
+{name:"Integrals",link:"Math12.html"},
+{name:"Application of Integrals",link:"Math12.html"},
+{name:"Differential Equations",link:"Math12.html"},
+{name:"Vector Algebra",link:"Math12.html"},
+{name:"Three Dimensional Geometry",link:"Math12.html"},
+{name:"Linear Programming",link:"Math12.html"},
+{name:"Probability",link:"Math12.html"},
+{name:"Electric Charges and Fields",link:"Physics12.html"},
+{name:"Electrostatic Potential and Capacitance",link:"Physics12.html"},
+{name:"Current Electricity",link:"Physics12.html"},
+{name:"Moving Charges and Magnetism",link:"Physics12.html"},
+{name:"Magnetism and Matter",link:"Physics12.html"},
+{name:"Electromagnetic Induction",link:"Physics12.html"},
+{name:"Alternating Current",link:"Physics12.html"},
+{name:"Electromagnetic Waves",link:"Physics12.html"},
+{name:"Ray Optics and Optical Instruments",link:"Physics12.html"},
+{name:"Wave Optics",link:"Physics12.html"},
+{name:"Dual Nature of Radiation and Matter",link:"Physics12.html"},
+{name:"Atoms",link:"Physics12.html"},
+{name:"Nuclei",link:"Physics12.html"},
+{name:"Semiconductor Electronics",link:"Physics12.html"},
+{name:"Solutions",link:"Chemistry12.html"},
+{name:"Electrochemistry",link:"Chemistry12.html"},
+{name:"Chemical Kinetics",link:"Chemistry12.html"},
+{name:"The d- and f-Block Elements",link:"Chemistry12.html"},
+{name:"Coordination Compounds",link:"Chemistry12.html"},
+{name:"Haloalkanes and Haloarenes",link:"Chemistry12.html"},
+{name:"Alcohols, Phenols and Ethers",link:"Chemistry12.html"},
+{name:"Aldehydes, Ketones and Carboxylic Acids",link:"Chemistry12.html"},
+{name:"Amines",link:"Chemistry12.html"},
+{name:"Biomolecules",link:"Chemistry12.html"},
+{name:"Sexual Reproduction in Flowering Plants",link:"Biology12.html"},
+{name:"Human Reproduction",link:"Biology12.html"},
+{name:"Reproductive Health",link:"Biology12.html"},
+{name:"Principles of Inheritance and Variation",link:"Biology12.html"},
+{name:"Molecular Basis of Inheritance",link:"Biology12.html"},
+{name:"Evolution",link:"Biology12.html"},
+{name:"Human Health and Disease",link:"Biology12.html"},
+{name:"Microbes in Human Welfare",link:"Biology12.html"},
+{name:"Biotechnology: Principles and Processes",link:"Biology12.html"},
+{name:"Biotechnology and its Applications",link:"Biology12.html"},
+{name:"Organisms and Populations",link:"Biology12.html"},
+{name:"Ecosystem",link:"Biology12.html"},
+{name:"Biodiversity and Conservation",link:"Biology12.html"},
+{name:"Environmental Issues",link:"Biology12.html"},
+{name:"Sets",link:"Math11.html"},
+{name:"Relations and Functions",link:"Math11.html"},
+{name:"Trigonometric Functions",link:"Math11.html"},
+{name:"Complex Numbers and Quadratic Equations",link:"Math11.html"},
+{name:"Linear Inequalities",link:"Math11.html"},
+{name:"Permutations and Combinations",link:"Math11.html"},
+{name:"Binomial Theorem",link:"Math11.html"},
+{name:"Sequences and Series",link:"Math11.html"},
+{name:"Straight Lines",link:"Math11.html"},
+{name:"Conic Sections",link:"Math11.html"},
+{name:"Introduction to Three-Dimensional Geometry",link:"Math11.html"},
+{name:"Limits and Derivatives",link:"Math11.html"},
+{name:"Statistics",link:"Math11.html"},
+{name:"Probability",link:"Math11.html"},
+{name:"Physical World",link:"Physics11.html"},
+{name:"Units and Measurements",link:"Physics11.html"},
+{name:"Motion in a Straight Line",link:"Physics11.html"},
+{name:"Motion in a Plane",link:"Physics11.html"},
+{name:"Laws of Motion",link:"Physics11.html"},
+{name:"Work, Energy and Power",link:"Physics11.html"},
+{name:"System of Particles and Rotational Motion",link:"Physics11.html"},
+{name:"Gravitation",link:"Physics11.html"},
+{name:"Mechanical Properties of Solids",link:"Physics11.html"},
+{name:"Mechanical Properties of Fluids",link:"Physics11.html"},
+{name:"Thermal Properties of Matter",link:"Physics11.html"},
+{name:"Thermodynamics",link:"Physics11.html"},
+{name:"Kinetic Theory",link:"Physics11.html"},
+{name:"Oscillations",link:"Physics11.html"},
+{name:"Waves",link:"Physics11.html"},
+{name:"Some Basic Concepts of Chemistry",link:"Chemistry11.html"},
+{name:"Structure of Atom",link:"Chemistry11.html"},
+{name:"Classification of Elements and Periodicity in Properties",link:"Chemistry11.html"},
+{name:"Chemical Bonding and Molecular Structure",link:"Chemistry11.html"},
+{name:"Chemical Thermodynamics",link:"Chemistry11.html"},
+{name:"Equilibrium",link:"Chemistry11.html"},
+{name:"Redox Reactions",link:"Chemistry11.html"},
+{name:"Organic Chemistry: Some Basic Principles and Techniques",link:"Chemistry11.html"},
+{name:"Hydrocarbons",link:"Chemistry11.html"},
+{name:"The Living World",link:"Biology11.html"},
+{name:"Biological Classification",link:"Biology11.html"},
+{name:"Plant Kingdom",link:"Biology11.html"},
+{name:"Animal Kingdom",link:"Biology11.html"},
+{name:"Morphology of Flowering Plants",link:"Biology11.html"},
+{name:"Anatomy of Flowering Plants",link:"Biology11.html"},
+{name:"Structural Organisation in Animals",link:"Biology11.html"},
+{name:"Cell: The Unit of Life",link:"Biology11.html"},
+{name:"Biomolecules",link:"Biology11.html"},
+{name:"Cell Cycle and Cell Division",link:"Biology11.html"},
+{name:"Photosynthesis in Higher Plants",link:"Biology11.html"},
+{name:"Respiration in Plants",link:"Biology11.html"},
+{name:"Plant Growth and Development",link:"Biology11.html"},
+{name:"Breathing and Exchange of Gases",link:"Biology11.html"},
+{name:"Body Fluids and Circulation",link:"Biology11.html"},
+{name:"Excretory Products and Their Elimination",link:"Biology11.html"},
+{name:"Locomotion and Movement",link:"Biology11.html"},
+{name:"Neural Control and Coordination",link:"Biology11.html"},
+{name:"Chemical Coordination and Integration",link:"Biology11.html"},
+{name:"A Letter to God",link:"English10.html"},
+{name:"Nelson Mandela: Long Walk to Freedom",link:"English10.html"},
+{name:"Two Stories about Flying",link:"English10.html"},
+{name:"From the Diary of Anne Frank",link:"English10.html"},
+{name:"Glimpses of India",link:"English10.html"},
+{name:"Mijbil the Otter",link:"English10.html"},
+{name:"Madam Rides the Bus",link:"English10.html"},
+{name:"The Sermon at Benares",link:"English10.html"},
+{name:"The Proposal",link:"English10.html"},
+{name:"A Triumph of Surgery",link:"English10.html"},
+{name:"The Thief's Story",link:"English10.html"},
+{name:"The Midnight Visitor",link:"English10.html"},
+{name:"A Question of Trust",link:"English10.html"},
+{name:"Footprints Without Feet",link:"English10.html"},
+{name:"The Making of a Scientist",link:"English10.html"},
+{name:"The Necklace",link:"English10.html"},
+{name:"Bholi",link:"English10.html"},
+{name:"The Book That Saved the Earth",link:"English10.html"},
+{name:"Real Numbers",link:"Math10.html"},
+{name:"Polynomials",link:"Math10.html"},
+{name:"Pair of Linear Equations in Two Variables",link:"Math10.html"},
+{name:"Quadratic Equations",link:"Math10.html"},
+{name:"Arithmetic Progressions",link:"Math10.html"},
+{name:"Triangles",link:"Math10.html"},
+{name:"Coordinate Geometry",link:"Math10.html"},
+{name:"Introduction to Trigonometry",link:"Math10.html"},
+{name:"Some Applications of Trigonometry",link:"Math10.html"},
+{name:"Circles",link:"Math10.html"},
+{name:"Areas Related to Circles",link:"Math10.html"},
+{name:"Surface Areas and Volumes",link:"Math10.html"},
+{name:"Statistics",link:"Math10.html"},
+{name:"Probability",link:"Math10.html"},
+{name:"Chemical Reactions and Equations",link:"Science10.html"},
+{name:"Acids, Bases and Salts",link:"Science10.html"},
+{name:"Metals and Non-Metals",link:"Science10.html"},
+{name:"Carbon and Its Compounds",link:"Science10.html"},
+{name:"Life Processes",link:"Science10.html"},
+{name:"Control and Coordination",link:"Science10.html"},
+{name:"How Do Organisms Reproduce?",link:"Science10.html"},
+{name:"Heredity and Evolution",link:"Science10.html"},
+{name:"Light – Reflection and Refraction",link:"Science10.html"},
+{name:"The Human Eye and the Colourful World",link:"Science10.html"},
+{name:"Electricity",link:"Science10.html"},
+{name:"Magnetic Effects of Electric Current",link:"Science10.html"},
+{name:"Our Environment",link:"Science10.html"},
+{name:"Sustainable Management of Natural Resources",link:"Science10.html"},
+{name:"The Rise of Nationalism in Europe",link:"Social10.html"},
+{name:"Nationalism in India",link:"Social10.html"},
+{name:"The Making of a Global World",link:"Social10.html"},
+{name:"The Age of Industrialisation",link:"Social10.html"},
+{name:"Print Culture and the Modern World",link:"Social10.html"},
+
+{name:"Resources and Development",link:"Social10.html"},
+{name:"Forest and Wildlife Resources",link:"Social10.html"},
+{name:"Water Resources",link:"Social10.html"},
+{name:"Agriculture",link:"Social10.html"},
+{name:"Minerals and Energy Resources",link:"Social10.html"},
+{name:"Manufacturing Industries",link:"Social10.html"},
+{name:"Lifelines of National Economy",link:"Social10.html"},
+
+{name:"Power Sharing",link:"Social10.html"},
+{name:"Federalism",link:"Social10.html"},
+{name:"Gender, Religion and Caste",link:"Social10.html"},
+{name:"Political Parties",link:"Social10.html"},
+{name:"Outcomes of Democracy",link:"Social10.html"},
+
+{name:"Development",link:"Social10.html"},
+{name:"Sectors of the Indian Economy",link:"Social10.html"},
+{name:"Money and Credit",link:"Social10.html"},
+{name:"Globalisation and the Indian Economy",link:"Social10.html"},
+{name:"Consumer Rights",link:"Social10.html"},
+
+];
+
+let results = "";
+
+for(let i=0;i<data.length;i++){
+
+if(data[i].name.toLowerCase().includes(query)){
+
+results +=
+`<p>
+<a href="${data[i].link}">
+${data[i].name}
+</a>
+</p>`;
+
+}
+
+}
+
+if(results===""){
+results="<p>No results found</p>";
+}
+
+document.getElementById("searchResults").innerHTML = results;
+
+}
 </script>
 <div id="sidebar" class="sidebar">
 
@@ -261,6 +490,24 @@ Free Study Materials for Students
 <p class="cbse">
 CBSE Notes for Classes 10, 11 & 12
 </p>
+<div class="about">
+
+<h2>🔍 Search Notes</h2>
+
+<input type="text" id="searchBox"
+placeholder="Search chapters, subjects, classes..."
+onkeyup="searchNotes()"
+style="width:80%;padding:12px;font-size:16px;border-radius:8px;border:1px solid gray;">
+
+<br><br>
+
+<button onclick="searchNotes()"
+style="padding:10px 20px;background:blue;color:white;border:none;border-radius:8px;">
+Search
+</button>
+<div id="searchResults"></div>
+
+</div>
 
 <div class="about" id="about">
 
