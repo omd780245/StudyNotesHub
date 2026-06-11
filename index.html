@@ -257,7 +257,7 @@ let data = [
 {name:"Vector Algebra",link:"Math12.html"},
 {name:"Three Dimensional Geometry",link:"Math12.html"},
 {name:"Linear Programming",link:"Math12.html"},
-{name:"Probability",link:"Math12.html"},
+{name:"Probability",link:"Math12.html",info:"Class 12 Mathematics"},
 {name:"Electric Charges and Fields",link:"Physics12.html"},
 {name:"Electrostatic Potential and Capacitance",link:"Physics12.html"},
 {name:"Current Electricity",link:"Physics12.html"},
@@ -434,11 +434,38 @@ for(let i=0;i<data.length;i++){
 if(data[i].name.toLowerCase().includes(query)){
 
 results +=
-`<p>
-<a href="${data[i].link}">
-${data[i].name}
+`
+<div style="
+background:white;
+margin:10px auto;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 8px lightgray;
+width:80%;
+max-width:500px;
+">
+
+<a href="${data[i].link}"
+style="
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+color:darkblue;
+">
+📖 ${data[i].name}
 </a>
-</p>`;
+
+<br>
+
+<small style="
+color:gray;
+font-size:14px;
+">
+${data[i].info || ""}
+</small>
+
+</div>
+`;
 
 }
 
