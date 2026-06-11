@@ -66,7 +66,28 @@ body{
     color:white;
     text-decoration:none;
 }
+.dark-mode .chapter{
+    background:#1e1e1e;
+    color:white;
+}
 
+.dark-mode .chapter-card{
+    background:#2a2a2a;
+    color:white;
+}
+
+.dark-mode .chapter-card h3{
+    color:white;
+}
+
+.dark-mode .section-title{
+    color:#4da6ff;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer{
+    background:#111;
+}
 </style>
 
 </head>
@@ -134,7 +155,17 @@ body{
 <div class="footer">
 <a href="Class11.html">⬅ Back to Class 11</a>
 </div>
+<script>
+window.onload = function(){
 
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+        document.body.classList.add("dark-mode");
+    }
+
+}
+</script>
 </body>
 
 </html>
