@@ -50,7 +50,28 @@ body{
     padding:15px;
     margin-top:30px;
 }
+.dark-mode{
+    background:#121212;
+    color:white;
+}
 
+.dark-mode .subject{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode .subject h2{
+    color:white;
+}
+
+.dark-mode .subject p{
+    color:#cccccc;
+}
+
+.dark-mode .navbar,
+.dark-mode .footer{
+    background:#111;
+}
 </style>
 
 </head>
@@ -118,7 +139,17 @@ body{
 <a href="index.html" style="color:white;">⬅ Back to Home</a>
 
 </div>
+<script>
+window.onload = function(){
 
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+        document.body.classList.add("dark-mode");
+    }
+
+}
+</script>
 </body>
 
 </html>
