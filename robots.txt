@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omd780245.github.io/StudyNotesHub/sitemap.xml
