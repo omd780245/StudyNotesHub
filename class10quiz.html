@@ -41,9 +41,12 @@
 }
 
 .menu-btn{
+    font-size:30px;
     color:white;
-    font-size:32px;
     cursor:pointer;
+    position:absolute;
+    left:10px;
+    top:10px;
 }
 .dark-mode{
     background:#121212;
@@ -111,8 +114,55 @@ body{
 #quizArea button:hover{
     background:#e8f0fe;
 }
+.sidebar{
+    height:100%;
+    width:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#111;
+    overflow-x:hidden;
+    transition:0.3s;
+    padding-top:60px;
+    z-index:1000;
+}
+
+.sidebar a{
+    padding:12px 25px;
+    text-decoration:none;
+    font-size:20px;
+    color:white;
+    display:block;
+}
+
+.sidebar a:hover{
+    background:#333;
+}
+
+.closebtn{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:35px !important;
+    color:white;
+}
 </style>
 <body onload="loadTheme()">
+
+<div id="sidebar" class="sidebar">
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<a href="#" onclick="toggleDarkMode()">🌙 Dark Mode</a>
+<a href="#" id="installBtn">📲 Install App</a>
+
+<a href="#faq">❓ FAQs</a>
+
+<a href="#contact">📞 Contact Us</a>
+
+<a href="#about">ℹ️ About Us</a>
+
+</div>
 <div class="navbar">
 
 <span class="menu-btn" onclick="openNav()">☰</span>
@@ -147,6 +197,23 @@ Select a chapter above to begin the quiz.
 
 </div>
 <script>
+  function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+    }else{
+        localStorage.setItem("theme","light");
+    }
+}
+  function openNav(){
+    document.getElementById("sidebar").style.width = "250px";
+}
+
+function closeNav(){
+    document.getElementById("sidebar").style.width = "0";
+}
   let currentQuestion = 0;
 let score = 0;
 const letterQuiz = [
@@ -339,7 +406,31 @@ document.body.classList.add("dark-mode");
 
 }
 </script>
-<div class="contact-card">
+<div id="faq" class="contact-card">
+
+<h2>❓ FAQs</h2>
+
+<p><b>Are the notes free?</b><br>Yes, all basic notes are free.</p>
+
+<p><b>Can I download PDFs?</b><br>Yes, chapter PDFs can be downloaded.</p>
+
+<p><b>How do I contact Study Notes Hub?</b><br>Use the Contact Us section below.</p>
+
+</div>
+<div id="about" class="contact-card">
+
+<h2>ℹ️ About Us</h2>
+
+<p>
+Study Notes Hub provides free notes, quizzes, MCQs and study materials for students.
+</p>
+
+<p>
+Created by Om Das.
+</p>
+
+</div>
+<div id="contact" class="contact-card">
 
 <h2>Contact Us</h2>
 
