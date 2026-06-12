@@ -278,6 +278,132 @@ options:["To buy land","To help family","To sow his fields again","To travel"],
 answer:2
 }
 ];
+const mandelaQuiz = [
+
+{
+question:"How many years did Nelson Mandela spend in prison?",
+options:["15 years","27 years","30 years","35 years"],
+answer:1
+},
+
+{
+question:"In which country did Nelson Mandela become President?",
+options:["India","South Africa","Kenya","Nigeria"],
+answer:1
+},
+
+{
+question:"What was the policy of racial discrimination called?",
+options:["Democracy","Apartheid","Colonialism","Slavery"],
+answer:1
+},
+
+{
+question:"When did Nelson Mandela become President?",
+options:["1990","1992","1994","1996"],
+answer:2
+},
+
+{
+question:"What is the title of Mandela's autobiography?",
+options:["Long Walk to Freedom","My Life","Freedom Journey","Road to Justice"],
+answer:0
+},
+
+{
+question:"Who was South Africa's first black President?",
+options:["Desmond Tutu","Nelson Mandela","Oliver Tambo","Thabo Mbeki"],
+answer:1
+},
+
+{
+question:"What did Mandela fight against?",
+options:["Poverty","Apartheid","Illiteracy","War"],
+answer:1
+},
+
+{
+question:"Which prize did Mandela receive in 1993?",
+options:["Bharat Ratna","Nobel Peace Prize","Booker Prize","Pulitzer Prize"],
+answer:1
+},
+
+{
+question:"What does courage mean according to Mandela?",
+options:["No fear","Victory","Triumph over fear","Strength"],
+answer:2
+},
+
+{
+question:"The lesson 'Nelson Mandela' is about?",
+options:["Education","Freedom","Science","Sports"],
+answer:1
+}
+
+];
+const flyingQuiz = [
+
+{
+question:"Who was afraid to fly?",
+options:["A young eagle","A young seagull","A sparrow","A pigeon"],
+answer:1
+},
+
+{
+question:"Why was the young seagull afraid?",
+options:["He was injured","He lacked confidence","He was hungry","He was tired"],
+answer:1
+},
+
+{
+question:"Who had already flown before him?",
+options:["His parents","His brothers and sister","His friends","Nobody"],
+answer:1
+},
+
+{
+question:"Where was the seagull standing alone?",
+options:["On a tree","On a cliff ledge","On a roof","On a rock"],
+answer:1
+},
+
+{
+question:"What did the seagull feel when he saw food?",
+options:["Anger","Fear","Hunger","Joy"],
+answer:2
+},
+
+{
+question:"Who brought food to the young seagull?",
+options:["His father","His sister","His mother","His brother"],
+answer:2
+},
+
+{
+question:"What did the mother hold in her beak?",
+options:["Fish","Bread","Meat","Worm"],
+answer:0
+},
+
+{
+question:"What happened when the seagull dived for the food?",
+options:["He fell into the sea","He started flying","He returned to the ledge","He got injured"],
+answer:1
+},
+
+{
+question:"Who wrote 'His First Flight'?",
+options:["Liam O'Flaherty","Frederick Forsyth","Ruskin Bond","R.K. Narayan"],
+answer:0
+},
+
+{
+question:"What is the main message of the story?",
+options:["Food is important","Family is important","Confidence helps overcome fear","Flying is difficult"],
+answer:2
+}
+
+];
 
 function loadQuiz(chapter){
 
@@ -292,47 +418,25 @@ return;
 }
 if(chapter === "mandela"){
 
-html = `
-<h2>Nelson Mandela Quiz</h2>
+currentQuestion = 0;
+score = 0;
+showMandelaQuestion();
+return;
 
-<p>1. How many years did Nelson Mandela spend in prison?</p>
+}
+if(chapter === "flying"){
 
-<input type="radio" name="q1" value="wrong"> 15 years<br>
-<input type="radio" name="q1" value="correct"> 27 years<br>
-<input type="radio" name="q1" value="wrong"> 30 years<br>
-<input type="radio" name="q1" value="wrong"> 35 years<br>
+currentQuestion = 0;
+score = 0;
+showFlyingQuestion();
+return;
 
-<br>
-
-<button onclick="checkAnswer()">Submit</button>
-
-<p id="result"></p>
-
-`;
 }
 
 document.getElementById("quizArea").innerHTML = html;
 
 }
-function checkAnswer(){
 
-let answer =
-document.querySelector('input[name="q1"]:checked');
-
-if(!answer){
-alert("Please select an answer");
-return;
-}
-
-if(answer.value === "correct"){
-document.getElementById("result").innerHTML =
-"✅ Correct Answer";
-}else{
-document.getElementById("result").innerHTML =
-"❌ Wrong Answer";
-}
-
-}
 function showLetterQuestion(){
 
 let q = letterQuiz[currentQuestion];
@@ -389,6 +493,136 @@ document.getElementById("quizArea").innerHTML = `
 <p><b>Percentage:</b> ${percent}%</p>
 
 <button onclick="loadQuiz('letter')">
+🔄 Retake Quiz
+</button>
+`;
+
+}
+
+}
+function showMandelaQuestion(){
+
+let q = mandelaQuiz[currentQuestion];
+
+let html = `
+<h2>Nelson Mandela Quiz</h2>
+
+<p>Question ${currentQuestion + 1} of ${mandelaQuiz.length}</p>
+
+<div style="background:#ddd;border-radius:10px;height:12px;margin:15px 0;">
+<div style="
+background:#1e88e5;
+width:${((currentQuestion+1)/mandelaQuiz.length)*100}%;
+height:12px;
+border-radius:10px;
+"></div>
+</div>
+
+<p>${q.question}</p>
+
+<button onclick="checkMandelaAnswer(0)">${q.options[0]}</button><br><br>
+
+<button onclick="checkMandelaAnswer(1)">${q.options[1]}</button><br><br>
+
+<button onclick="checkMandelaAnswer(2)">${q.options[2]}</button><br><br>
+
+<button onclick="checkMandelaAnswer(3)">${q.options[3]}</button><br><br>
+
+`;
+
+document.getElementById("quizArea").innerHTML = html;
+
+}
+
+function checkMandelaAnswer(selected){
+
+if(selected === mandelaQuiz[currentQuestion].answer){
+score++;
+}
+
+currentQuestion++;
+
+if(currentQuestion < mandelaQuiz.length){
+
+showMandelaQuestion();
+
+}else{
+
+let percent = Math.round((score / mandelaQuiz.length) * 100);
+
+document.getElementById("quizArea").innerHTML = `
+<h2>🎉 Quiz Completed</h2>
+
+<p><b>Score:</b> ${score}/${mandelaQuiz.length}</p>
+
+<p><b>Percentage:</b> ${percent}%</p>
+
+<button onclick="loadQuiz('mandela')">
+🔄 Retake Quiz
+</button>
+`;
+
+}
+
+}
+function showFlyingQuestion(){
+
+let q = flyingQuiz[currentQuestion];
+
+let html = `
+<h2>Two Stories About Flying Quiz</h2>
+
+<p>Question ${currentQuestion + 1} of ${flyingQuiz.length}</p>
+
+<div style="background:#ddd;border-radius:10px;height:12px;margin:15px 0;">
+<div style="
+background:#1e88e5;
+width:${((currentQuestion+1)/flyingQuiz.length)*100}%;
+height:12px;
+border-radius:10px;
+"></div>
+</div>
+
+<p>${q.question}</p>
+
+<button onclick="checkFlyingAnswer(0)">${q.options[0]}</button><br><br>
+
+<button onclick="checkFlyingAnswer(1)">${q.options[1]}</button><br><br>
+
+<button onclick="checkFlyingAnswer(2)">${q.options[2]}</button><br><br>
+
+<button onclick="checkFlyingAnswer(3)">${q.options[3]}</button><br><br>
+
+`;
+
+document.getElementById("quizArea").innerHTML = html;
+
+}
+
+function checkFlyingAnswer(selected){
+
+if(selected === flyingQuiz[currentQuestion].answer){
+score++;
+}
+
+currentQuestion++;
+
+if(currentQuestion < flyingQuiz.length){
+
+showFlyingQuestion();
+
+}else{
+
+let percent = Math.round((score / flyingQuiz.length) * 100);
+
+document.getElementById("quizArea").innerHTML = `
+<h2>🎉 Quiz Completed</h2>
+
+<p><b>Score:</b> ${score}/${flyingQuiz.length}</p>
+
+<p><b>Percentage:</b> ${percent}%</p>
+
+<button onclick="loadQuiz('flying')">
 🔄 Retake Quiz
 </button>
 `;
