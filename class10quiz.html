@@ -404,6 +404,69 @@ answer:2
 }
 
 ];
+const anneQuiz = [
+
+{
+question:"What was Anne Frank's age when she received her diary?",
+options:["11","12","13","14"],
+answer:2
+},
+
+{
+question:"What was the name Anne gave to her diary?",
+options:["Kitty","Daisy","Lucy","Minnie"],
+answer:0
+},
+
+{
+question:"Where was Anne Frank born?",
+options:["Germany","France","Netherlands","Belgium"],
+answer:0
+},
+
+{
+question:"Why did Anne start writing a diary?",
+options:["School project","She had no real friend","To write stories","Her father told her"],
+answer:1
+},
+
+{
+question:"What was Anne's diary mainly about?",
+options:["Science","Travel","Her thoughts and experiences","History"],
+answer:2
+},
+
+{
+question:"Who wrote 'From the Diary of Anne Frank'?",
+options:["Anne Frank","Otto Frank","Nelson Mandela","Anne Sullivan"],
+answer:0
+},
+
+{
+question:"What was Anne's father's name?",
+options:["John Frank","Otto Frank","Peter Frank","Albert Frank"],
+answer:1
+},
+
+{
+question:"Which war was going on during Anne's life?",
+options:["World War I","World War II","Cold War","Vietnam War"],
+answer:1
+},
+
+{
+question:"What kind of girl was Anne?",
+options:["Quiet","Shy","Talkative","Lazy"],
+answer:2
+},
+
+{
+question:"What is the main theme of Anne Frank's diary?",
+options:["Friendship and self-expression","Sports","Adventure","Science"],
+answer:0
+}
+
+];
 
 function loadQuiz(chapter){
 
@@ -429,6 +492,14 @@ if(chapter === "flying"){
 currentQuestion = 0;
 score = 0;
 showFlyingQuestion();
+return;
+
+}
+if(chapter === "anne"){
+
+currentQuestion = 0;
+score = 0;
+showAnneQuestion();
 return;
 
 }
@@ -623,6 +694,71 @@ document.getElementById("quizArea").innerHTML = `
 <p><b>Percentage:</b> ${percent}%</p>
 
 <button onclick="loadQuiz('flying')">
+🔄 Retake Quiz
+</button>
+`;
+
+}
+
+}
+function showAnneQuestion(){
+
+let q = anneQuiz[currentQuestion];
+
+let html = `
+<h2>Anne Frank Quiz</h2>
+
+<p>Question ${currentQuestion + 1} of ${anneQuiz.length}</p>
+
+<div style="background:#ddd;border-radius:10px;height:12px;margin:15px 0;">
+<div style="
+background:#1e88e5;
+width:${((currentQuestion+1)/anneQuiz.length)*100}%;
+height:12px;
+border-radius:10px;
+"></div>
+</div>
+
+<p>${q.question}</p>
+
+<button onclick="checkAnneAnswer(0)">${q.options[0]}</button><br><br>
+
+<button onclick="checkAnneAnswer(1)">${q.options[1]}</button><br><br>
+
+<button onclick="checkAnneAnswer(2)">${q.options[2]}</button><br><br>
+
+<button onclick="checkAnneAnswer(3)">${q.options[3]}</button><br><br>
+
+`;
+
+document.getElementById("quizArea").innerHTML = html;
+
+}
+
+function checkAnneAnswer(selected){
+
+if(selected === anneQuiz[currentQuestion].answer){
+score++;
+}
+
+currentQuestion++;
+
+if(currentQuestion < anneQuiz.length){
+
+showAnneQuestion();
+
+}else{
+
+let percent = Math.round((score / anneQuiz.length) * 100);
+
+document.getElementById("quizArea").innerHTML = `
+<h2>🎉 Quiz Completed</h2>
+
+<p><b>Score:</b> ${score}/${anneQuiz.length}</p>
+
+<p><b>Percentage:</b> ${percent}%</p>
+
+<button onclick="loadQuiz('anne')">
 🔄 Retake Quiz
 </button>
 `;
