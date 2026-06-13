@@ -7,7 +7,7 @@
 <style>
 
 body{
-    background:#dfe8ef;
+    background:linear-gradient(135deg,#dfe8ef,#f8fbff);
     font-family:Arial,sans-serif;
     margin:0;
     padding:20px;
@@ -16,7 +16,8 @@ body{
 
 .pyq-card{
     background:white;
-    max-width:600px;
+    max-width:800px;
+    width:90%;
     margin:20px auto;
     padding:25px;
     border-radius:20px;
@@ -29,6 +30,11 @@ button{
     border:none;
     border-radius:10px;
     cursor:pointer;
+    transition:0.3s;
+}
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 .year-btn{
     background:#1e88e5;
@@ -39,6 +45,28 @@ button{
 .year-btn:hover{
     background:#1565c0;
 }
+h1{
+    color:#1565c0;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#555;
+    margin-bottom:25px;
+    font-size:16px;
+}
+.class-btn{
+    background:#1565c0;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    padding:14px 24px;
+}
+.back-btn{
+    background:#6c757d;
+    color:white;
+    font-weight:bold;
+}
 </style>
 
 </head>
@@ -46,12 +74,15 @@ button{
 <body>
 
 <h1>📖 Previous Year Questions</h1>
+<p class="subtitle">
+Practice CBSE Board Exam Questions Year-wise
+</p>
 
-<button onclick="showClass('10')">Class 10</button>
+<button class="class-btn" onclick="showClass('10')">Class 10</button>
 
-<button onclick="showClass('11')">Class 11</button>
+<button class="class-btn" onclick="showClass('11')">Class 11</button>
 
-<button onclick="showClass('12')">Class 12</button>
+<button class="class-btn" onclick="showClass('12')">Class 12</button>
 
 <div id="pyqArea" class="pyq-card">
 
@@ -83,6 +114,9 @@ html = `
 <div id="englishYearArea">
 <p>Select a year above.</p>
 </div>
+<button class="back-btn" onclick="showClass('10')">
+⬅ Back to Subjects
+</button>
 `;
 
 }
@@ -106,6 +140,9 @@ html = `
 <p>Select a year above.</p>
 
 </div>
+<button class="back-btn" onclick="showClass('10')">
+⬅ Back to Subjects
+</button>
 `;
 
 }
@@ -114,7 +151,24 @@ if(subject === "math10"){
 html = `
 <h2>📐 Class 10 Mathematics PYQs</h2>
 
-<p>Math PYQs Coming Soon...</p>
+<button class="year-btn" onclick="showMathYear('2025')">2025</button>
+
+<button class="year-btn" onclick="showMathYear('2024')">2024</button>
+
+<button class="year-btn" onclick="showMathYear('2023')">2023</button>
+
+<button class="year-btn" onclick="showMathYear('2022')">2022</button>
+
+<button class="year-btn" onclick="showMathYear('2020')">2020</button>
+
+<div id="mathYearArea">
+
+<p>Select a year above.</p>
+
+</div>
+<button class="back-btn" onclick="showClass('10')">
+⬅ Back to Subjects
+</button>
 `;
 
 }
@@ -123,7 +177,24 @@ if(subject === "social10"){
 html = `
 <h2>🌍 Class 10 Social Science PYQs</h2>
 
-<p>Social Science PYQs Coming Soon...</p>
+<button class="year-btn" onclick="showSocialYear('2025')">2025</button>
+
+<button class="year-btn" onclick="showSocialYear('2024')">2024</button>
+
+<button class="year-btn" onclick="showSocialYear('2023')">2023</button>
+
+<button class="year-btn" onclick="showSocialYear('2022')">2022</button>
+
+<button class="year-btn" onclick="showSocialYear('2020')">2020</button>
+
+<div id="socialYearArea">
+
+<p>Select a year above.</p>
+
+</div>
+<button class="back-btn" onclick="showClass('10')">
+⬅ Back to Subjects
+</button>
 `;
 
 }
@@ -317,6 +388,28 @@ html = `
 }
 
 document.getElementById("englishYearArea").innerHTML = html;
+
+}
+function showScienceYear(year){
+
+let html = `
+
+<h3>🔬 Class 10 Science PYQ ${year}</h3><p>Science PYQs Coming Soon...</p>
+`;document.getElementById("scienceYearArea").innerHTML = html;
+
+}
+
+function showMathYear(year){
+
+document.getElementById("mathYearArea").innerHTML =
+"<h3>📐 Math PYQs Coming Soon...</h3>";
+
+}
+
+function showSocialYear(year){
+
+document.getElementById("socialYearArea").innerHTML =
+"<h3>🌍 Social Science PYQs Coming Soon...</h3>";
 
 }
 function showClass(cls){
