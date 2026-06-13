@@ -1,13 +1,385 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>PYQs | Study Notes Hub</title>
+<title>PYQ | Study Notes Hub</title>
+
+<style>
+
+body{
+    background:#dfe8ef;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+    text-align:center;
+}
+
+.pyq-card{
+    background:white;
+    max-width:600px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+button{
+    padding:12px 20px;
+    margin:5px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+.year-btn{
+    background:#1e88e5;
+    color:white;
+    font-weight:bold;
+}
+
+.year-btn:hover{
+    background:#1565c0;
+}
+</style>
+
 </head>
+
 <body>
 
-<h1>📄 Previous Year Questions</h1>
+<h1>📖 Previous Year Questions</h1>
 
-<p>PYQ section coming soon.</p>
+<button onclick="showClass('10')">Class 10</button>
+
+<button onclick="showClass('11')">Class 11</button>
+
+<button onclick="showClass('12')">Class 12</button>
+
+<div id="pyqArea" class="pyq-card">
+
+<h2>Select a Subject</h2>
+
+<p>
+Choose a subject above.
+</p>
+
+</div>
+
+<script>
+
+function showPYQ(subject){
+
+let html = "";
+
+if(subject === "english10"){
+
+html = `
+<h2>📚 Class 10 English PYQs</h2>
+
+<button class="year-btn" onclick="showEnglishYear('2025')">2025</button>
+<button class="year-btn" onclick="showEnglishYear('2024')">2024</button>
+<button class="year-btn" onclick="showEnglishYear('2023')">2023</button>
+<button class="year-btn" onclick="showEnglishYear('2022')">2022</button>
+<button class="year-btn" onclick="showEnglishYear('2020')">2020</button>
+
+<div id="englishYearArea">
+<p>Select a year above.</p>
+</div>
+`;
+
+}
+if(subject === "science10"){
+
+html = `
+<h2>🔬 Class 10 Science PYQs</h2>
+
+<button class="year-btn" onclick="showScienceYear('2025')">2025</button>
+
+<button class="year-btn" onclick="showScienceYear('2024')">2024</button>
+
+<button class="year-btn" onclick="showScienceYear('2023')">2023</button>
+
+<button class="year-btn" onclick="showScienceYear('2022')">2022</button>
+
+<button class="year-btn" onclick="showScienceYear('2020')">2020</button>
+
+<div id="scienceYearArea">
+
+<p>Select a year above.</p>
+
+</div>
+`;
+
+}
+if(subject === "math10"){
+
+html = `
+<h2>📐 Class 10 Mathematics PYQs</h2>
+
+<p>Math PYQs Coming Soon...</p>
+`;
+
+}
+if(subject === "social10"){
+
+html = `
+<h2>🌍 Class 10 Social Science PYQs</h2>
+
+<p>Social Science PYQs Coming Soon...</p>
+`;
+
+}
+
+document.getElementById("pyqArea").innerHTML = html;
+
+}
+
+function showEnglishYear(year){
+
+let html = "";
+
+if(year === "2025"){
+html = `
+<h3>📚 CBSE English PYQ 2025</h3>
+
+<p>1. Why would Lencho have preferred a plague of locusts to a hailstorm?</p>
+
+<p>2. What did Anil promise Hari Singh?</p>
+
+<p>3. Explain the significance of the word "wound" used by Mandela.</p>
+
+<p>4. How is Dust of Snow a poem about nature and simplicity?</p>
+
+<p>5. Why was Rajvir excited about the tea plantations?</p>
+
+<p>6. How does the poet use humour in How to Tell Wild Animals?</p>
+
+<p>7. Why was Mijbil's journey to England like a nightmare?</p>
+
+<p>8. What does courage mean according to Mandela?</p>
+
+<p>9. Why did Lencho write a letter to God?</p>
+
+<p>10. What message does His First Flight convey?</p>
+
+<p>11. Compare Amanda's desire for freedom with Valli's.</p>
+
+<p>12. Trace Matilda's transformation in The Necklace.</p>
+
+<p>13. Was Horace Danby's arrest a result of his own foolishness? Explain.</p>
+
+<p>14. What role did education play in Bholi's life?</p>
+
+<p>15. Compare the themes of The Ball Poem and Nelson Mandela.</p>
+`;
+}
+
+if(year === "2024"){
+html = `
+<h3>📚 CBSE English PYQ 2024</h3>
+
+<p>1. What mood is reflected in the poem Dust of Snow?</p>
+
+<p>2. What makes Custard the dragon look fearsome?</p>
+
+<p>3. Why did Bholi's teacher feel like an artist?</p>
+
+<p>4. What is the twist at the end of The Necklace?</p>
+
+<p>5. What does the speaker's attitude towards the boy suggest in The Ball Poem?</p>
+
+<p>6. What message does Buddha's story convey?</p>
+
+<p>7. Why does the tiger ignore the visitors?</p>
+
+<p>8. What does the poem For Anne Gregory suggest about love?</p>
+
+<p>9. Why did Rajvir visit Assam?</p>
+
+<p>10. What attracted visitors to Coorg?</p>
+
+<p>11. How did Anil influence Hari Singh?</p>
+
+<p>12. Describe Matilda's character before losing the necklace.</p>
+
+<p>13. How did Nelson Mandela define courage?</p>
+
+<p>14. Compare the baker's life in Goa with modern times.</p>
+
+<p>15. How did education empower Bholi?</p>
+`;
+}
+
+if(year === "2023"){
+html = `
+<h3>📚 CBSE English PYQ 2023</h3>
+
+<p>1. What did Pranjol and Rajvir do during their train journey?</p>
+
+<p>2. Who read Lencho's letter and what action did he take?</p>
+
+<p>3. Why did Anil not hand over Hari Singh to the police?</p>
+
+<p>4. What opinion did Mr. Weiherer have about Richard Ebright?</p>
+
+<p>5. Why did Anne Frank feel lonely?</p>
+
+<p>6. What topics did Anne and her friends usually discuss?</p>
+
+<p>7. Why was Mrs Hall convinced the room was haunted?</p>
+
+<p>8. How can a tiger be identified according to the poem?</p>
+
+<p>9. What do the tiger's stripes symbolize?</p>
+
+<p>10. Where is Coorg located?</p>
+
+<p>11. What are the special qualities of Coorg people?</p>
+
+<p>12. What message does The Tale of Custard the Dragon convey?</p>
+
+<p>13. What did Buddha teach Kisa Gotami?</p>
+
+<p>14. How did education help Bholi become confident?</p>
+
+<p>15. Explain Matilda's downfall in The Necklace.</p>
+`;
+}
+
+if(year === "2022"){
+html = `
+<h3>📚 CBSE English PYQ 2022</h3>
+
+<p>1. How, according to Buddha, can one obtain peace of mind?</p>
+
+<p>2. What does Amanda's mother's behaviour reveal?</p>
+
+<p>3. Why does Walt Whitman prefer living with animals?</p>
+
+<p>4. Write a brief character sketch of Lomov.</p>
+
+<p>5. What attracts visitors to Coorg?</p>
+
+<p>6. What qualities are needed to become a scientist according to Ebright's teacher?</p>
+
+<p>7. How did the hack driver fool the young lawyer?</p>
+
+<p>8. Why did Amanda want freedom?</p>
+
+<p>9. What lesson does Animals teach?</p>
+
+<p>10. Why is Lomov considered a humorous character?</p>
+
+<p>11. How did Bholi gain confidence through education?</p>
+
+<p>12. What message does The Sermon at Benares convey?</p>
+
+<p>13. Why was Valli considered mature for her age?</p>
+
+<p>14. How did Matilda's negligence ruin her life?</p>
+
+<p>15. What is the importance of girl education in Bholi?</p>
+`;
+}
+
+if(year === "2020"){
+html = `
+<h3>📚 CBSE English PYQ 2020</h3>
+
+<p>1. Why would Lencho have preferred a plague of locusts to a hailstorm?</p>
+
+<p>2. How did the postmaster help Lencho?</p>
+
+<p>3. Why did Anne Frank feel that paper had more patience than people?</p>
+
+<p>4. What made the young seagull finally fly?</p>
+
+<p>5. What does courage mean according to Nelson Mandela?</p>
+
+<p>6. Why did Valli want to ride a bus?</p>
+
+<p>7. How did Bholi's teacher change her life?</p>
+
+<p>8. Why was Lencho called an ox of a man?</p>
+
+<p>9. What was the young seagull afraid of?</p>
+
+<p>10. How did Mandela define freedom?</p>
+
+<p>11. What role did education play in Bholi's success?</p>
+
+<p>12. Explain the relationship between Hari Singh and Anil.</p>
+
+<p>13. How did Valli display determination and maturity?</p>
+
+<p>14. How did Matilda's desire for luxury lead to her downfall?</p>
+
+<p>15. How does Nelson Mandela inspire young people?</p>
+`;
+}
+
+document.getElementById("englishYearArea").innerHTML = html;
+
+}
+function showClass(cls){
+
+let html = "";
+
+if(cls === "10"){
+
+html = `
+<h2>📚 Class 10 Subjects</h2>
+
+<button onclick="showPYQ('english10')">English</button>
+
+<button onclick="showPYQ('science10')">Science</button>
+
+<button onclick="showPYQ('math10')">Mathematics</button>
+
+<button onclick="showPYQ('social10')">Social Science</button>
+`;
+
+}
+
+if(cls === "11"){
+
+html = `
+<h2>📚 Class 11 Subjects</h2>
+
+<button>English</button>
+
+<button>Physics</button>
+
+<button>Chemistry</button>
+
+<button>Biology</button>
+
+<button>Mathematics</button>
+`;
+
+}
+
+if(cls === "12"){
+
+html = `
+<h2>📚 Class 12 Subjects</h2>
+
+<button>English</button>
+
+<button>Physics</button>
+
+<button>Chemistry</button>
+
+<button>Biology</button>
+
+<button>Mathematics</button>
+`;
+
+}
+
+document.getElementById("pyqArea").innerHTML = html;
+
+}
+</script>
 
 </body>
+
 </html>
