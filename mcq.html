@@ -2,12 +2,211 @@
 <html>
 <head>
 <title>MCQs | Study Notes Hub</title>
+<style>
+
+body{
+    background:#dfe8ef;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+    text-align:center;
+}
+
+.mcq-card{
+    background:white;
+    max-width:850px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.class-btn{
+    background:#43a047;
+    color:white;
+    font-weight:bold;
+    padding:14px 20px;
+    border:none;
+    border-radius:12px;
+    margin:8px;
+    cursor:pointer;
+}
+
+.class-btn:hover{
+    background:#2e7d32;
+}
+
+.subject-btn{
+    background:#1e88e5;
+    color:white;
+    font-weight:bold;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.subject-btn:hover{
+    background:#1565c0;
+}
+
+.top-bar{
+    background:#1565c0;
+    color:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+.subject-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    max-width:500px;
+    margin:20px auto;
+}
+.back-btn{
+    background:#757575;
+    color:white;
+    font-weight:bold;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.back-btn:hover{
+    background:#616161;
+}
+</style>
 </head>
 <body>
 
-<h1>🎯 MCQs</h1>
+<div class="top-bar">
+🎯 Important MCQs
+</div>
 
-<p>MCQ section coming soon.</p>
+<button class="class-btn" onclick="showClass('10')">Class 10</button>
+
+<button class="class-btn" onclick="showClass('11')">Class 11</button>
+
+<button class="class-btn" onclick="showClass('12')">Class 12</button>
+
+<div id="mcqArea" class="mcq-card">
+
+<h2>Select a Class</h2>
+
+<p>Choose a class above.</p>
+
+</div>
+
+<script>
+
+function showClass(cls){
+
+let html = "";
+
+if(cls === "10"){
+
+html = `
+<h2>📚 Class 10 MCQs</h2>
+
+<div class="subject-grid">
+
+<button class="subject-btn" onclick="showMCQ('english10')">
+English
+</button>
+
+<button class="subject-btn" onclick="showMCQ('science10')">
+Science
+</button>
+
+<button class="subject-btn" onclick="showMCQ('math10')">
+Mathematics
+</button>
+
+<button class="subject-btn" onclick="showMCQ('social10')">
+Social Science
+</button>
+
+</div>
+`;
+}
+
+document.getElementById("mcqArea").innerHTML = html;
+
+}
+function showMCQ(subject){
+
+let html = "";
+
+if(subject === "english10"){
+
+html = `
+<h2>📚 Class 10 English MCQs</h2>
+
+<p>Total Important MCQs: 20</p>
+
+<p>MCQs Coming Soon...</p>
+
+<button class="back-btn" onclick="showClass('10')">
+← Back to Subjects
+</button>
+`;
+}
+
+if(subject === "science10"){
+
+html = `
+<h2>📚 Class 10 Sciemce MCQs</h2>
+
+<p>Total Important MCQs: 20</p>
+
+<p>MCQs Coming Soon...</p>
+
+<button class="back-btn" onclick="showClass('10')">
+← Back to Subjects
+</button>
+`;
+}
+
+if(subject === "math10"){
+
+html = `
+<h2>📚 Class 10 Mathematics MCQs</h2>
+
+<p>Total Important MCQs: 20</p>
+
+<p>MCQs Coming Soon...</p>
+
+<button class="back-btn" onclick="showClass('10')">
+← Back to Subjects
+</button>
+`;
+}
+
+if(subject === "social10"){
+
+html = `
+<h2>📚 Class 10 Social Science MCQs</h2>
+
+<p>Total Important MCQs: 20</p>
+
+<p>MCQs Coming Soon...</p>
+
+<button class="back-btn" onclick="showClass('10')">
+← Back to Subjects
+</button>
+`;
+}
+
+document.getElementById("mcqArea").innerHTML = html;
+
+}
+
+</script>
 
 </body>
 </html>
