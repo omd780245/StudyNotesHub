@@ -16,8 +16,7 @@ body{
 
 .pyq-card{
     background:white;
-    max-width:800px;
-    width:90%;
+    max-width:850px;
     margin:20px auto;
     padding:25px;
     border-radius:20px;
@@ -40,6 +39,48 @@ button:hover{
     background:#1e88e5;
     color:white;
     font-weight:bold;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    margin:5px;
+    transition:0.3s;
+}
+
+.year-btn:hover{
+    background:#1565c0;
+    transform:scale(1.05);
+}
+.question-box{
+    background:white;
+    padding:15px;
+    margin:12px 0;
+    border-left:5px solid #1e88e5;
+    border-radius:12px;
+    text-align:left;
+    font-size:16px;
+    line-height:1.6;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.question-box:hover{
+    transform:translateY(-2px);
+}
+
+.question-box:hover{
+    transform:translateY(-2px);
+}
+.question-box{
+    line-height:1.6;
+}
+
+.question-box:hover{
+    transform:translateY(-2px);
+}
+
+h3{
+    color:#1565c0;
+    margin-bottom:20px;
 }
 
 .year-btn:hover{
@@ -66,6 +107,11 @@ h1{
     background:#6c757d;
     color:white;
     font-weight:bold;
+}
+.subject-title{
+    color:#1565c0;
+    font-size:28px;
+    margin-bottom:20px;
 }
 </style>
 
@@ -103,7 +149,7 @@ let html = "";
 if(subject === "english10"){
 
 html = `
-<h2>📚 Class 10 English PYQs</h2>
+<h2 class="subject-title">📚 Class 10 English PYQs</h2>
 
 <button class="year-btn" onclick="showEnglishYear('2025')">2025</button>
 <button class="year-btn" onclick="showEnglishYear('2024')">2024</button>
@@ -123,7 +169,7 @@ html = `
 if(subject === "science10"){
 
 html = `
-<h2>🔬 Class 10 Science PYQs</h2>
+<h2 class="subject-title">🔬 Class 10 Science PYQs</h2>
 
 <button class="year-btn" onclick="showScienceYear('2025')">2025</button>
 
@@ -149,7 +195,7 @@ html = `
 if(subject === "math10"){
 
 html = `
-<h2>📐 Class 10 Mathematics PYQs</h2>
+<h2 class="subject-title">📐 Class 10 Math PYQs</h2>
 
 <button class="year-btn" onclick="showMathYear('2025')">2025</button>
 
@@ -207,183 +253,348 @@ function showEnglishYear(year){
 
 let html = "";
 
+
 if(year === "2025"){
+
 html = `
+
 <h3>📚 CBSE English PYQ 2025</h3>
 
-<p>1. Why would Lencho have preferred a plague of locusts to a hailstorm?</p>
+<div class="question-box">
+1. Why would Lencho have preferred a plague of locusts to a hailstorm?
+</div>
 
-<p>2. What did Anil promise Hari Singh?</p>
+<div class="question-box">
+2. What did Anil promise Hari Singh?
+</div>
 
-<p>3. Explain the significance of the word "wound" used by Mandela.</p>
+<div class="question-box">
+3. Explain the significance of the word "wound" used by Mandela.
+</div>
 
-<p>4. How is Dust of Snow a poem about nature and simplicity?</p>
+<div class="question-box">
+4. How is Dust of Snow a poem about nature and simplicity?
+</div>
 
-<p>5. Why was Rajvir excited about the tea plantations?</p>
+<div class="question-box">
+5. Why was Rajvir excited about the tea plantations?
+</div>
 
-<p>6. How does the poet use humour in How to Tell Wild Animals?</p>
+<div class="question-box">
+6. How does the poet use humour in How to Tell Wild Animals?
+</div>
 
-<p>7. Why was Mijbil's journey to England like a nightmare?</p>
+<div class="question-box">
+7. Why was Mijbil's journey to England like a nightmare?
+</div>
 
-<p>8. What does courage mean according to Mandela?</p>
+<div class="question-box">
+8. What does courage mean according to Mandela?
+</div>
 
-<p>9. Why did Lencho write a letter to God?</p>
+<div class="question-box">
+9. Why did Lencho write a letter to God?
+</div>
 
-<p>10. What message does His First Flight convey?</p>
+<div class="question-box">
+10. What message does His First Flight convey?
+</div>
 
-<p>11. Compare Amanda's desire for freedom with Valli's.</p>
+<div class="question-box">
+11. Compare Amanda's desire for freedom with Valli's.
+</div>
 
-<p>12. Trace Matilda's transformation in The Necklace.</p>
+<div class="question-box">
+12. Trace Matilda's transformation in The Necklace.
+</div>
 
-<p>13. Was Horace Danby's arrest a result of his own foolishness? Explain.</p>
+<div class="question-box">
+13. Was Horace Danby's arrest a result of his own foolishness? Explain.
+</div>
 
-<p>14. What role did education play in Bholi's life?</p>
+<div class="question-box">
+14. What role did education play in Bholi's life?
+</div>
 
-<p>15. Compare the themes of The Ball Poem and Nelson Mandela.</p>
+<div class="question-box">
+15. Compare the themes of The Ball Poem and Nelson Mandela.
+</div>
+
 `;
 }
-
 if(year === "2024"){
+
 html = `
+
 <h3>📚 CBSE English PYQ 2024</h3>
 
-<p>1. What mood is reflected in the poem Dust of Snow?</p>
+<div class="question-box">
+1. What mood is reflected in the poem Dust of Snow?
+</div>
 
-<p>2. What makes Custard the dragon look fearsome?</p>
+<div class="question-box">
+2. What makes Custard the dragon look fearsome?
+</div>
 
-<p>3. Why did Bholi's teacher feel like an artist?</p>
+<div class="question-box">
+3. Why did Bholi's teacher feel like an artist?
+</div>
 
-<p>4. What is the twist at the end of The Necklace?</p>
+<div class="question-box">
+4. What is the twist at the end of The Necklace?
+</div>
 
-<p>5. What does the speaker's attitude towards the boy suggest in The Ball Poem?</p>
+<div class="question-box">
+5. What does the speaker's attitude towards the boy suggest in The Ball Poem?
+</div>
 
-<p>6. What message does Buddha's story convey?</p>
+<div class="question-box">
+6. What message does Buddha's story convey?
+</div>
 
-<p>7. Why does the tiger ignore the visitors?</p>
+<div class="question-box">
+7. Why does the tiger ignore the visitors?
+</div>
 
-<p>8. What does the poem For Anne Gregory suggest about love?</p>
+<div class="question-box">
+8. What does the poem For Anne Gregory suggest about love?
+</div>
 
-<p>9. Why did Rajvir visit Assam?</p>
+<div class="question-box">
+9. Why did Rajvir visit Assam?
+</div>
 
-<p>10. What attracted visitors to Coorg?</p>
+<div class="question-box">
+10. What attracted visitors to Coorg?
+</div>
 
-<p>11. How did Anil influence Hari Singh?</p>
+<div class="question-box">
+11. How did Anil influence Hari Singh?
+</div>
 
-<p>12. Describe Matilda's character before losing the necklace.</p>
+<div class="question-box">
+12. Describe Matilda's character before losing the necklace.
+</div>
 
-<p>13. How did Nelson Mandela define courage?</p>
+<div class="question-box">
+13. How did Nelson Mandela define courage?
+</div>
 
-<p>14. Compare the baker's life in Goa with modern times.</p>
+<div class="question-box">
+14. Compare the baker's life in Goa with modern times.
+</div>
 
-<p>15. How did education empower Bholi?</p>
+<div class="question-box">
+15. How did education empower Bholi?
+</div>
+
 `;
 }
 
 if(year === "2023"){
+
 html = `
+
 <h3>📚 CBSE English PYQ 2023</h3>
 
-<p>1. What did Pranjol and Rajvir do during their train journey?</p>
+<div class="question-box">
+1. What did Pranjol and Rajvir do during their train journey?
+</div>
 
-<p>2. Who read Lencho's letter and what action did he take?</p>
+<div class="question-box">
+2. Who read Lencho's letter and what action did he take?
+</div>
 
-<p>3. Why did Anil not hand over Hari Singh to the police?</p>
+<div class="question-box">
+3. Why did Anil not hand over Hari Singh to the police?
+</div>
 
-<p>4. What opinion did Mr. Weiherer have about Richard Ebright?</p>
+<div class="question-box">
+4. What opinion did Mr. Weiherer have about Richard Ebright?
+</div>
 
-<p>5. Why did Anne Frank feel lonely?</p>
+<div class="question-box">
+5. Why did Anne Frank feel lonely?
+</div>
 
-<p>6. What topics did Anne and her friends usually discuss?</p>
+<div class="question-box">
+6. What topics did Anne and her friends usually discuss?
+</div>
 
-<p>7. Why was Mrs Hall convinced the room was haunted?</p>
+<div class="question-box">
+7. Why was Mrs Hall convinced the room was haunted?
+</div>
 
-<p>8. How can a tiger be identified according to the poem?</p>
+<div class="question-box">
+8. How can a tiger be identified according to the poem?
+</div>
 
-<p>9. What do the tiger's stripes symbolize?</p>
+<div class="question-box">
+9. What do the tiger's stripes symbolize?
+</div>
 
-<p>10. Where is Coorg located?</p>
+<div class="question-box">
+10. Where is Coorg located?
+</div>
 
-<p>11. What are the special qualities of Coorg people?</p>
+<div class="question-box">
+11. What are the special qualities of Coorg people?
+</div>
 
-<p>12. What message does The Tale of Custard the Dragon convey?</p>
+<div class="question-box">
+12. What message does The Tale of Custard the Dragon convey?
+</div>
 
-<p>13. What did Buddha teach Kisa Gotami?</p>
+<div class="question-box">
+13. What did Buddha teach Kisa Gotami?
+</div>
 
-<p>14. How did education help Bholi become confident?</p>
+<div class="question-box">
+14. How did education help Bholi become confident?
+</div>
 
-<p>15. Explain Matilda's downfall in The Necklace.</p>
+<div class="question-box">
+15. Explain Matilda's downfall in The Necklace.
+</div>
+
 `;
 }
 
 if(year === "2022"){
+
 html = `
+
 <h3>📚 CBSE English PYQ 2022</h3>
 
-<p>1. How, according to Buddha, can one obtain peace of mind?</p>
+<div class="question-box">
+1. How, according to Buddha, can one obtain peace of mind?
+</div>
 
-<p>2. What does Amanda's mother's behaviour reveal?</p>
+<div class="question-box">
+2. What does Amanda's mother's behaviour reveal?
+</div>
 
-<p>3. Why does Walt Whitman prefer living with animals?</p>
+<div class="question-box">
+3. Why does Walt Whitman prefer living with animals?
+</div>
 
-<p>4. Write a brief character sketch of Lomov.</p>
+<div class="question-box">
+4. Write a brief character sketch of Lomov.
+</div>
 
-<p>5. What attracts visitors to Coorg?</p>
+<div class="question-box">
+5. What attracts visitors to Coorg?
+</div>
 
-<p>6. What qualities are needed to become a scientist according to Ebright's teacher?</p>
+<div class="question-box">
+6. What qualities are needed to become a scientist according to Ebright's teacher?
+</div>
 
-<p>7. How did the hack driver fool the young lawyer?</p>
+<div class="question-box">
+7. How did the hack driver fool the young lawyer?
+</div>
 
-<p>8. Why did Amanda want freedom?</p>
+<div class="question-box">
+8. Why did Amanda want freedom?
+</div>
 
-<p>9. What lesson does Animals teach?</p>
+<div class="question-box">
+9. What lesson does Animals teach?
+</div>
 
-<p>10. Why is Lomov considered a humorous character?</p>
+<div class="question-box">
+10. Why is Lomov considered a humorous character?
+</div>
 
-<p>11. How did Bholi gain confidence through education?</p>
+<div class="question-box">
+11. How did Bholi gain confidence through education?
+</div>
 
-<p>12. What message does The Sermon at Benares convey?</p>
+<div class="question-box">
+12. What message does The Sermon at Benares convey?
+</div>
 
-<p>13. Why was Valli considered mature for her age?</p>
+<div class="question-box">
+13. Why was Valli considered mature for her age?
+</div>
 
-<p>14. How did Matilda's negligence ruin her life?</p>
+<div class="question-box">
+14. How did Matilda's negligence ruin her life?
+</div>
 
-<p>15. What is the importance of girl education in Bholi?</p>
+<div class="question-box">
+15. What is the importance of girl education in Bholi?
+</div>
+
 `;
 }
 
 if(year === "2020"){
+
 html = `
+
 <h3>📚 CBSE English PYQ 2020</h3>
 
-<p>1. Why would Lencho have preferred a plague of locusts to a hailstorm?</p>
+<div class="question-box">
+1. Why would Lencho have preferred a plague of locusts to a hailstorm?
+</div>
 
-<p>2. How did the postmaster help Lencho?</p>
+<div class="question-box">
+2. How did the postmaster help Lencho?
+</div>
 
-<p>3. Why did Anne Frank feel that paper had more patience than people?</p>
+<div class="question-box">
+3. Why did Anne Frank feel that paper had more patience than people?
+</div>
 
-<p>4. What made the young seagull finally fly?</p>
+<div class="question-box">
+4. What made the young seagull finally fly?
+</div>
 
-<p>5. What does courage mean according to Nelson Mandela?</p>
+<div class="question-box">
+5. What does courage mean according to Nelson Mandela?
+</div>
 
-<p>6. Why did Valli want to ride a bus?</p>
+<div class="question-box">
+6. Why did Valli want to ride a bus?
+</div>
 
-<p>7. How did Bholi's teacher change her life?</p>
+<div class="question-box">
+7. How did Bholi's teacher change her life?
+</div>
 
-<p>8. Why was Lencho called an ox of a man?</p>
+<div class="question-box">
+8. Why was Lencho called an ox of a man?
+</div>
 
-<p>9. What was the young seagull afraid of?</p>
+<div class="question-box">
+9. What was the young seagull afraid of?
+</div>
 
-<p>10. How did Mandela define freedom?</p>
+<div class="question-box">
+10. How did Mandela define freedom?
+</div>
 
-<p>11. What role did education play in Bholi's success?</p>
+<div class="question-box">
+11. What role did education play in Bholi's success?
+</div>
 
-<p>12. Explain the relationship between Hari Singh and Anil.</p>
+<div class="question-box">
+12. Explain the relationship between Hari Singh and Anil.
+</div>
 
-<p>13. How did Valli display determination and maturity?</p>
+<div class="question-box">
+13. How did Valli display determination and maturity?
+</div>
 
-<p>14. How did Matilda's desire for luxury lead to her downfall?</p>
+<div class="question-box">
+14. How did Matilda's desire for luxury lead to her downfall?
+</div>
 
-<p>15. How does Nelson Mandela inspire young people?</p>
+<div class="question-box">
+15. How does Nelson Mandela inspire young people?
+</div>
+
 `;
 }
 
@@ -408,8 +619,283 @@ document.getElementById("mathYearArea").innerHTML =
 
 function showSocialYear(year){
 
-document.getElementById("socialYearArea").innerHTML =
-"<h3>🌍 Social Science PYQs Coming Soon...</h3>";
+let html = "";
+
+if(year === "2025"){
+
+html = `
+
+<h3>🌍 CBSE Social Science PYQ 2025</h3>
+
+<div class="question-box">
+1. What is Human Development Index (HDI)? Why is it important?
+</div>
+
+<div class="question-box">
+2. Explain the role of political parties in a democracy.
+</div>
+
+<div class="question-box">
+3. Distinguish between Union List, State List and Concurrent List.
+</div>
+
+<div class="question-box">
+4. How did Belgium successfully accommodate cultural diversity?
+</div>
+
+<div class="question-box">
+5. Explain any three causes of power sharing in a democracy.
+</div>
+
+<div class="question-box">
+6. What is federalism? Mention any three features of federalism.
+</div>
+
+<div class="question-box">
+7. How does democracy improve the quality of decision-making?
+</div>
+
+<div class="question-box">
+8. Explain any three advantages of political parties.
+</div>
+
+<div class="question-box">
+9. What is the importance of gender equality in society?
+</div>
+
+<div class="question-box">
+10. Explain the concept of sustainable development.
+</div>
+
+<div class="question-box">
+11. Describe the classification of resources with examples.
+</div>
+
+<div class="question-box">
+12. Explain any three factors responsible for the growth of globalisation.
+</div>
+
+<div class="question-box">
+13. What is the significance of agriculture in the Indian economy?
+</div>
+
+<div class="question-box">
+14. Explain the formation and importance of the European Union.
+</div>
+
+<div class="question-box">
+15. Differentiate between renewable and non-renewable resources.
+</div>
+
+`;
+}
+if(year === "2024"){
+
+html = `
+
+<h3>🌍 CBSE Social Science PYQ 2024</h3>
+
+<div class="question-box">
+1. Explain any three features of federalism.
+</div>
+
+<div class="question-box">
+2. How did Belgium accommodate its linguistic and cultural diversity?
+</div>
+
+<div class="question-box">
+3. Explain any three functions of political parties in a democracy.
+</div>
+
+<div class="question-box">
+4. Why is power sharing desirable in a democracy?
+</div>
+
+<div class="question-box">
+5. Explain the role of democracy in enhancing dignity and freedom of citizens.
+</div>
+
+<div class="question-box">
+6. Differentiate between organised and unorganised sectors.
+</div>
+
+<div class="question-box">
+7. What is sustainable development? Explain its importance.
+</div>
+
+<div class="question-box">
+8. Explain any three factors responsible for globalisation.
+</div>
+
+<div class="question-box">
+9. Describe the importance of manufacturing industries in India.
+</div>
+
+<div class="question-box">
+10. Explain the classification of resources with suitable examples.
+</div>
+
+<div class="question-box">
+11. Explain the importance of agriculture in the Indian economy.
+</div>
+
+<div class="question-box">
+12. What are the major outcomes of democracy?
+</div>
+
+<div class="question-box">
+13. Explain the significance of consumer rights.
+</div>
+
+<div class="question-box">
+14. Describe any three measures for conservation of resources.
+</div>
+
+<div class="question-box">
+15. Explain the importance of human capital formation in development.
+</div>
+
+`;
+}
+if(year === "2023"){
+
+html = `
+
+<h3>🌍 CBSE Social Science PYQ 2023</h3>
+
+<div class="question-box">
+1. Explain any three features of power sharing in a democracy.
+</div>
+
+<div class="question-box">
+2. How does federalism strengthen democracy in India?
+</div>
+
+<div class="question-box">
+3. Describe the role of political parties in a democratic country.
+</div>
+
+<div class="question-box">
+4. Explain any three challenges faced by democracy.
+</div>
+
+<div class="question-box">
+5. What is sustainable development? Why is it important?
+</div>
+
+<div class="question-box">
+6. Explain the importance of resource planning in India.
+</div>
+
+<div class="question-box">
+7. Differentiate between renewable and non-renewable resources.
+</div>
+
+<div class="question-box">
+8. Explain any three factors affecting agriculture in India.
+</div>
+
+<div class="question-box">
+9. What is globalisation? Explain its impact on India.
+</div>
+
+<div class="question-box">
+10. Explain the importance of consumer rights.
+</div>
+
+<div class="question-box">
+11. Describe the significance of manufacturing industries in India.
+</div>
+
+<div class="question-box">
+12. What is Human Development Index (HDI)? Explain its importance.
+</div>
+
+<div class="question-box">
+13. How did nationalism develop in Europe?
+</div>
+
+<div class="question-box">
+14. Explain the role of print culture in the growth of nationalism.
+</div>
+
+<div class="question-box">
+15. Describe the major outcomes of democracy.
+</div>
+
+`;
+}
+if(year === "2022"){
+
+html = `
+
+<h3>🌍 CBSE Social Science PYQ 2022</h3>
+
+<div class="question-box">
+1. Explain any three features of the Civil Disobedience Movement.
+</div>
+
+<div class="question-box">
+2. Why did Mahatma Gandhi visit Champaran in 1917? Explain.
+</div>
+
+<div class="question-box">
+3. Explain the impact of the First World War on the Indian economy.
+</div>
+
+<div class="question-box">
+4. Explain any three features of Satyagraha.
+</div>
+
+<div class="question-box">
+5. Differentiate between ruling party and opposition party.
+</div>
+
+<div class="question-box">
+6. Explain any three functions of political parties.
+</div>
+
+<div class="question-box">
+7. What are the major outcomes of democracy?
+</div>
+
+<div class="question-box">
+8. Explain any three conditions necessary for a successful democracy.
+</div>
+
+<div class="question-box">
+9. What is credit? Explain how credit can be both helpful and harmful.
+</div>
+
+<div class="question-box">
+10. Explain the importance of consumer rights.
+</div>
+
+<div class="question-box">
+11. Classify industries on the basis of raw materials with examples.
+</div>
+
+<div class="question-box">
+12. Explain the importance of National Highways in India.
+</div>
+
+<div class="question-box">
+13. Explain the importance of chemical industries in India.
+</div>
+
+<div class="question-box">
+14. Describe the importance of resource planning in India.
+</div>
+
+<div class="question-box">
+15. Explain any three factors responsible for the growth of globalisation.
+</div>
+
+`;
+}
+
+
+document.getElementById("socialYearArea").innerHTML = html;
 
 }
 function showClass(cls){
