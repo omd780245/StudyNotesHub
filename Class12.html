@@ -27,21 +27,26 @@ body{
 
 .subject{
     background:white;
-    width:80%;
-    max-width:300px;
-    margin:20px auto;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px gray;
+    width:85%;
+    max-width:350px;
+    margin:25px auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    transition:0.3s;
 }
-
+.subject:hover{
+    transform:translateY(-4px);
+}
 .subject a{
     text-decoration:none;
     color:white;
-    background:blue;
-    padding:10px 20px;
-    border-radius:8px;
+    background:#1565c0;
+    padding:12px 24px;
+    border-radius:30px;
     display:inline-block;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 .footer{
@@ -77,6 +82,35 @@ body{
 .dark-mode .footer{
     background:#111;
 }
+.chapter-card{
+    background:white;
+    width:90%;
+    max-width:650px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.chapter-card:hover{
+    transform:translateY(-3px);
+}
+
+.chapter-card h3{
+    margin:0 0 15px 0;
+    font-size:20px;
+}
+
+.chapter-card a{
+    text-decoration:none;
+    color:white;
+    background:#1565c0;
+    padding:10px 22px;
+    border-radius:25px;
+    display:inline-block;
+    font-weight:bold;
+}
 </style>
 
 </head>
@@ -90,37 +124,58 @@ body{
 <a href="Class12.html">Class 12</a>
 </div>
 
+<div id="pageHeader">
+
 <h1>📘 Class 12 Notes</h1>
 
+<p>Select a Subject</p>
+
+</div>
+<div id="subjectsArea">
+  
 <div class="subject">
 <h2>Physics</h2>
 <p>Chapter-wise Physics Notes<br>NEET Level</p>
-<a href="Physics12.html">Open</a>
+<a href="#" onclick="showSubject('Physics'); return false;">
+Open</a>
 </div>
 
 <div class="subject">
 <h2>Chemistry</h2>
 <p>Chapter-wise Chemistry Notes
 <br>NEET Level</p>
-<a href="Chemistry12.html">Open</a>
+<a href="#" onclick="showSubject('Chemistry'); return false;">
+Open
+</a>
 </div>
 
 <div class="subject">
 <h2>Biology</h2>
 <p>Chapter-wise Biology Notes</p>
-<a href="Biology12.html">Open</a>
+<a href="#" onclick="showSubject('Biology'); return false;">
+Open
+</a>
 </div>
 
 <div class="subject">
 <h2>Mathematics</h2>
 <p>Chapter-wise Mathematics Notes</p>
-<a href="Math12.html">Open</a>
+<a href="#" onclick="showSubject('Mathematics'); return false;">
+Open
+</a>
 </div>
 
 <div class="subject">
 <h2>English</h2>
 <p>Chapter-wise English Notes</p>
-<a href="English12.html">Open</a>
+<a href="#" onclick="showSubject('English'); return false;">
+Open
+</a>
+</div>
+</div>
+
+<div id="notesArea">
+
 </div>
 
 <div class="footer">
@@ -136,6 +191,93 @@ window.onload = function(){
     }
 
 }
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEmCezyyc0mq03KXi89raWu8iO13pfbYk",
+  authDomain: "study-notes-hub-7ac7e.firebaseapp.com",
+  databaseURL: "https://study-notes-hub-7ac7e-default-rtdb.firebaseio.com",
+  projectId: "study-notes-hub-7ac7e",
+  storageBucket: "study-notes-hub-7ac7e.firebasestorage.app",
+  messagingSenderId: "286577611912",
+  appId: "1:286577611912:web:6efb8badfcb473b749fb3d"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+const currentClass = "Class 12";
+function showSubject(subject){
+
+document.getElementById("subjectsArea").style.display = "none";
+document.getElementById("pageHeader").style.display = "none";
+
+document.getElementById("notesArea").innerHTML =
+"<h2>📚 " + subject + " Notes</h2><p>Loading...</p>";
+
+db.ref("notes").once("value")
+.then(function(snapshot){
+
+let data = snapshot.val();
+
+let html = "<h2>📚 " + subject + " Notes</h2>";
+let found = false;
+
+for(let id in data){
+
+if(
+data[id].class === currentClass &&
+data[id].subject === subject
+){
+
+found = true;
+
+html += `
+<div class="chapter-card">
+<h3>${data[id].chapter}</h3>
+
+<a href="${data[id].pdf}" target="_blank">
+📄 Open PDF
+</a>
+
+</div>
+`;
+
+}
+
+}
+if(!found){
+
+html += `
+<p>No notes available yet.</p>
+`;
+
+}
+html += `
+<button onclick="backToSubjects()">
+⬅ Back to Subjects
+</button>
+`;
+
+document.getElementById("notesArea").innerHTML = html;
+
+});
+
+}
+function backToSubjects(){
+
+document.getElementById("subjectsArea").style.display = "block";
+document.getElementById("pageHeader").style.display = "block";
+
+document.getElementById("notesArea").innerHTML = "";
+
+}
+
 </script>
 </body>
 

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes Management | Study Notes Hub</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+margin-bottom:20px;
+}
+
+select,input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+background:#1565c0;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Notes Management</h1>
+
+<div class="card">
+
+<select id="classSelect">
+<option>Select Class</option>
+<option>Class 10</option>
+<option>Class 11</option>
+<option>Class 12</option>
+</select>
+
+<select id="subjectSelect">
+<option>Select Subject</option>
+</select>
+
+<input type="text" id="chapterName" placeholder="Chapter Name">
+
+<input type="text" id="pdfLink" placeholder="PDF Link">
+
+<button onclick="addChapter()">Add Chapter</button>
+
+</div>
+
+</div>
+<div class="card">
+
+<h2>Saved Notes</h2>
+
+<div id="notesList">
+
+Loading...
+
+</div>
+
+</div>
+<script>
+
+const classSelect =
+document.getElementById("classSelect");
+
+const subjectSelect =
+document.getElementById("subjectSelect");
+
+classSelect.addEventListener("change", function(){
+
+const selectedClass = this.value;
+
+subjectSelect.innerHTML =
+'<option>Select Subject</option>';
+
+if(selectedClass === "Class 10"){
+
+subjectSelect.innerHTML +=
+'<option>English</option>';
+
+subjectSelect.innerHTML +=
+'<option>Science</option>';
+
+subjectSelect.innerHTML +=
+'<option>Mathematics</option>';
+
+subjectSelect.innerHTML +=
+'<option>Social Science</option>';
+
+}
+if(selectedClass === "Class 11"){
+
+subjectSelect.innerHTML +=
+'<option>English</option>';
+
+subjectSelect.innerHTML +=
+'<option>Physics</option>';
+
+subjectSelect.innerHTML +=
+'<option>Chemistry</option>';
+
+subjectSelect.innerHTML +=
+'<option>Mathematics</option>';
+
+subjectSelect.innerHTML +=
+'<option>Biology</option>';
+
+subjectSelect.innerHTML +=
+'<option>Computer Science</option>';
+
+}
+if(selectedClass === "Class 12"){
+
+subjectSelect.innerHTML +=
+'<option>English</option>';
+
+subjectSelect.innerHTML +=
+'<option>Physics</option>';
+
+subjectSelect.innerHTML +=
+'<option>Chemistry</option>';
+
+subjectSelect.innerHTML +=
+'<option>Mathematics</option>';
+
+subjectSelect.innerHTML +=
+'<option>Biology</option>';
+
+subjectSelect.innerHTML +=
+'<option>Computer Science</option>';
+
+}
+
+});
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEmCezyyc0mq03KXi89raWu8iO13pfbYk",
+  authDomain: "study-notes-hub-7ac7e.firebaseapp.com",
+  databaseURL: "https://study-notes-hub-7ac7e-default-rtdb.firebaseio.com",
+  projectId: "study-notes-hub-7ac7e",
+  storageBucket: "study-notes-hub-7ac7e.firebasestorage.app",
+  messagingSenderId: "286577611912",
+  appId: "1:286577611912:web:6efb8badfcb473b749fb3d"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+let editingId = null;
+db.ref("notes").on("value", function(snapshot){
+
+let data = snapshot.val();
+
+alert(JSON.stringify(data));
+
+document.getElementById("notesList").innerHTML = "";
+
+for(let id in data){
+
+document.getElementById("notesList").innerHTML +=
+`
+<div style="margin-bottom:15px;">
+
+<b>${data[id].chapter}</b><br>
+${data[id].subject} | ${data[id].class}
+
+<br><br>
+
+<button onclick="editNote('${id}')">
+Edit
+</button>
+
+<button onclick="deleteNote('${id}')">
+Delete
+</button>
+
+</div>
+
+<hr>
+`;
+
+}
+
+});
+
+function addChapter(){
+
+const className =
+document.getElementById("classSelect").value;
+
+const subjectName =
+document.getElementById("subjectSelect").value;
+
+const chapterName =
+document.getElementById("chapterName").value;
+
+const pdfLink =
+document.getElementById("pdfLink").value;
+
+if(editingId){
+
+db.ref("notes/" + editingId)
+.update({
+class: className,
+subject: subjectName,
+chapter: chapterName,
+pdf: pdfLink
+})
+.then(function(){
+
+alert("Note Updated");
+
+editingId = null;
+
+})
+.catch(function(error){
+
+alert(error.message);
+
+});
+
+}else{
+
+db.ref("notes")
+.push({
+class: className,
+subject: subjectName,
+chapter: chapterName,
+pdf: pdfLink
+})
+.then(function(){
+
+alert("Chapter Added Successfully");
+
+})
+.catch(function(error){
+
+alert(error.message);
+
+});
+
+}
+
+}
+function deleteNote(id){
+
+db.ref("notes/" + id)
+.remove()
+.then(function(){
+
+alert("Note Deleted");
+
+})
+.catch(function(error){
+
+alert(error.message);
+
+});
+
+}
+
+function editNote(id){
+
+editingId = id;
+
+db.ref("notes/" + id)
+.once("value")
+.then(function(snapshot){
+
+const note = snapshot.val();
+
+document.getElementById("chapterName").value =
+note.chapter;
+
+document.getElementById("pdfLink").value =
+note.pdf;
+
+window.scrollTo(0,0);
+
+});
+
+}
+</script>
+</body>
+</html>
