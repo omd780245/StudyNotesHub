@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Dashboard | Study Notes Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+display:none;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:220px;
+height:100%;
+background:#1565c0;
+padding-top:20px;
+overflow-y:auto;
+transition:0.3s;
+}
+
+.logo{
+color:white;
+font-size:24px;
+font-weight:bold;
+text-align:center;
+padding:20px 10px;
+border-bottom:1px solid rgba(255,255,255,0.2);
+margin-bottom:15px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:15px 20px;
+text-decoration:none;
+font-size:17px;
+}
+
+.sidebar a:hover{
+background:rgba(255,255,255,0.15);
+}
+
+.logout{
+position:absolute;
+bottom:20px;
+width:100%;
+}
+
+.main{
+margin-left:220px;
+padding:25px;
+}
+
+.main h1{
+margin-bottom:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.stat-card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.stat-card h3{
+margin-bottom:10px;
+}
+
+.stat-card p{
+font-size:28px;
+font-weight:bold;
+color:#1565c0;
+}
+
+.menu-btn{
+display:none;
+}
+
+@media(max-width:768px){
+
+.menu-btn{
+display:block;
+position:fixed;
+top:10px;
+left:10px;
+background:transparent;
+color:black;
+border:none;
+padding:5px;
+font-size:18px;
+font-weight:bold;
+z-index:2000;
+cursor:pointer;
+}
+
+.sidebar{
+left:-220px;
+z-index:1500;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.main{
+margin-left:0;
+padding:70px 15px 15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+📚 Study Notes Hub
+</div>
+
+<a href="#">📊 Dashboard</a>
+<a href="notes-admin.html">📚 Notes</a>
+<a href="#">📖 PYQs</a>
+<a href="#">🎯 MCQs</a>
+<a href="#">📢 Announcements</a>
+<a href="#">📈 Statistics</a>
+<a href="#">🗑️ Recycle Bin</a>
+<a href="#">⚙️ Settings</a>
+
+<div class="logout">
+<a href="#" onclick="logout()">🚪 Logout</a>
+</div>
+
+</div>
+
+<div class="main">
+
+<h1>Admin Dashboard</h1>
+
+<div class="cards">
+
+<div class="stat-card">
+<h3>📚 Notes</h3>
+<p>0</p>
+</div>
+
+<div class="stat-card">
+<h3>📖 PYQs</h3>
+<p>0</p>
+</div>
+
+<div class="stat-card">
+<h3>🎯 MCQs</h3>
+<p>0</p>
+</div>
+
+<div class="stat-card">
+<h3>👥 Visitors</h3>
+<p id="visitorCount">Loading...</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function toggleMenu(){
+
+const sidebar = document.getElementById("sidebar");
+const button = document.querySelector(".menu-btn");
+
+sidebar.classList.toggle("active");
+
+if(sidebar.classList.contains("active")){
+button.innerHTML = "✕";
+}else{
+button.innerHTML = "☰";
+}
+
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEmCezyyc0mq03KXi89raWu8iO13pfbYk",
+  authDomain: "study-notes-hub-7ac7e.firebaseapp.com",
+  databaseURL: "https://study-notes-hub-7ac7e-default-rtdb.firebaseio.com",
+  projectId: "study-notes-hub-7ac7e",
+  storageBucket: "study-notes-hub-7ac7e.firebasestorage.app",
+  messagingSenderId: "286577611912",
+  appId: "1:286577611912:web:6efb8badfcb473b749fb3d"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+firebase.auth().onAuthStateChanged(function(user){
+
+if(user){
+
+document.body.style.display = "block";
+
+}else{
+
+window.location.href = "admin.html";
+
+}
+
+});
+db.ref("visitors").on("value", function(snapshot){
+
+document.getElementById("visitorCount").innerText =
+snapshot.val();
+
+});
+function logout(){
+
+firebase.auth().signOut()
+
+.then(function(){
+
+window.location.href = "admin.html";
+
+});
+
+}
+</script>
+</body>
+</html>
