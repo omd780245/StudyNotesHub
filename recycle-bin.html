@@ -8,6 +8,7 @@
 <style>
 
 body{
+  display:none;
     font-family:Arial,sans-serif;
     background:#f0f8ff;
     margin:0;
@@ -72,6 +73,7 @@ Deleted notes will appear here.
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script>
 
@@ -88,6 +90,19 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.database();
+firebase.auth().onAuthStateChanged(function(user){
+
+if(user){
+
+document.body.style.display = "block";
+
+}else{
+
+window.location.href = "admin.html";
+
+}
+
+});
 db.ref("recycleBin").once("value")
 .then(function(snapshot){
 
