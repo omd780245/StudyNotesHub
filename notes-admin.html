@@ -283,15 +283,24 @@ alert(error.message);
 function deleteNote(id){
 
 db.ref("notes/" + id)
-.remove()
-.then(function(){
+.once("value")
+.then(function(snapshot){
 
-alert("Note Deleted");
+    let noteData = snapshot.val();
 
-})
-.catch(function(error){
+    db.ref("recycleBin")
+    .push(noteData)
+    .then(function(){
 
-alert(error.message);
+        db.ref("notes/" + id)
+        .remove()
+        .then(function(){
+
+            alert("Note moved to Recycle Bin");
+
+        });
+
+    });
 
 });
 

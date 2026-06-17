@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recycle Bin</title>
+
+<title>Recycle Bin</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f0f8ff;
+    margin:0;
+    text-align:center;
+}
+
+.navbar{
+    background:darkblue;
+    color:white;
+    padding:15px;
+}
+
+.subject{
+    background:white;
+    width:85%;
+    max-width:500px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+}
+
+.footer{
+    background:darkblue;
+    padding:15px;
+    margin-top:30px;
+}
+
+.footer a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="navbar">
+<h2>🗑️ Recycle Bin</h2>
+</div>
+
+<div id="recycleBinArea" class="subject">
+
+<h3>No deleted notes yet</h3>
+
+<p>
+Deleted notes will appear here.
+</p>
+
+</div>
+
+<div class="footer">
+
+<a href="dashboard.html">
+⬅ Back to Dashboard
+</a>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCEmCezyyc0mq03KXi89raWu8iO13pfbYk",
+  authDomain: "study-notes-hub-7ac7e.firebaseapp.com",
+  databaseURL: "https://study-notes-hub-7ac7e-default-rtdb.firebaseio.com",
+  projectId: "study-notes-hub-7ac7e",
+  storageBucket: "study-notes-hub-7ac7e.firebasestorage.app",
+  messagingSenderId: "286577611912",
+  appId: "1:286577611912:web:6efb8badfcb473b749fb3d"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+db.ref("recycleBin").once("value")
+.then(function(snapshot){
+
+    let data = snapshot.val();
+
+let html = "";
+
+for(let id in data){
+
+html += `
+<div class="subject">
+
+<h3>${data[id].chapter}</h3>
+
+<p>
+${data[id].class} • ${data[id].subject}
+</p>
+
+<button onclick="restoreNote('${id}')">
+♻️ Restore
+</button>
+
+<button onclick="deleteForever('${id}')">
+🗑️ Delete Forever
+</button>
+
+</div>
+`;
+
+}
+
+document.getElementById("recycleBinArea").innerHTML = html;
+
+});
+function restoreNote(id){
+
+db.ref("recycleBin/" + id)
+.once("value")
+.then(function(snapshot){
+
+    let noteData = snapshot.val();
+
+    db.ref("notes")
+    .push(noteData)
+    .then(function(){
+
+        db.ref("recycleBin/" + id)
+        .remove()
+        .then(function(){
+
+            alert("Note Restored");
+
+            location.reload();
+
+        });
+
+    });
+
+});
+
+}
+function deleteForever(id){
+
+db.ref("recycleBin/" + id)
+.remove()
+.then(function(){
+
+    alert("Note Permanently Deleted");
+
+    location.reload();
+
+});
+
+}
+</script>
+</body>
+</html>
