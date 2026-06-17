@@ -163,8 +163,8 @@ padding:70px 15px 15px;
 <div class="cards">
 
 <div class="stat-card">
-<h3>📚 Notes</h3>
-<p>0</p>
+<h3>📚 Total Notes</h3>
+<p id="notesCount">Loading...</p>
 </div>
 
 <div class="stat-card">
@@ -180,6 +180,10 @@ padding:70px 15px 15px;
 <div class="stat-card">
 <h3>👥 Visitors</h3>
 <p id="visitorCount">Loading...</p>
+</div>
+<div class="stat-card">
+<h3>🗑️ Deleted Notes</h3>
+<p id="deletedCount">Loading...</p>
 </div>
 
 </div>
@@ -238,6 +242,36 @@ db.ref("visitors").on("value", function(snapshot){
 
 document.getElementById("visitorCount").innerText =
 snapshot.val();
+
+});
+db.ref("notes").on("value", function(snapshot){
+
+let data = snapshot.val();
+
+let count = 0;
+
+if(data){
+
+count = Object.keys(data).length;
+
+}
+
+document.getElementById("notesCount").innerText = count;
+
+});
+db.ref("recycleBin").on("value", function(snapshot){
+
+let data = snapshot.val();
+
+let count = 0;
+
+if(data){
+
+count = Object.keys(data).length;
+
+}
+
+document.getElementById("deletedCount").innerText = count;
 
 });
 function logout(){
