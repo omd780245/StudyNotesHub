@@ -56,9 +56,9 @@ h1{
 .about{
     width:85%;
     max-width:700px;
-    margin:auto;
+    margin:25px auto;
     background:white;
-    padding:20px;
+    padding:12px;
     border-radius:15px;
     box-shadow:0 0 10px gray;
 }
@@ -198,6 +198,18 @@ h1{
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
+db.ref("announcement").on("value", function(snapshot){
+
+let announcement = snapshot.val();
+
+if(announcement){
+
+document.getElementById("announcementText").innerText =
+announcement;
+
+}
+
+});
 
 function openNav(){
 document.getElementById("sidebar").style.width="250px";
@@ -373,6 +385,15 @@ Free Notes, Important Questions & Study Materials
 
 <p class="cbse">
 CBSE Classes 10, 11 & 12
+</p>
+
+</div>
+<div class="about">
+
+<h2>📢 Announcements</h2>
+
+<p id="announcementText">
+No announcements yet.
 </p>
 
 </div>

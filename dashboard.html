@@ -145,7 +145,6 @@ padding:70px 15px 15px;
 <a href="notes-admin.html">📚 Notes</a>
 <a href="#">📖 PYQs</a>
 <a href="#">🎯 MCQs</a>
-<a href="#">📢 Announcements</a>
 <a href="#">📈 Statistics</a>
 <a href="recycle-bin.html">🗑️ Recycle Bin</a>
 <a href="#">⚙️ Settings</a>
@@ -161,7 +160,23 @@ padding:70px 15px 15px;
 <h1>Admin Dashboard</h1>
 
 <div class="cards">
+<div id="announcementsSection" class="stat-card">
 
+<h3>📢 Announcements</h3>
+
+<textarea
+id="announcementInput"
+placeholder="Type announcement here..."
+style="width:95%;height:100px;padding:10px;">
+</textarea>
+
+<br><br>
+
+<button onclick="saveAnnouncement()">
+Save Announcement
+</button>
+
+</div>
 <div class="stat-card">
 <h3>📚 Total Notes</h3>
 <p id="notesCount">Loading...</p>
@@ -284,6 +299,26 @@ window.location.href = "admin.html";
 
 });
 
+}
+function saveAnnouncement(){
+
+let text =
+document.getElementById("announcementInput").value;
+
+alert(text);
+alert("After Text");
+
+db.ref("announcement").set(text)
+.then(function(){
+
+alert("Announcement Saved");
+
+})
+.catch(function(error){
+
+alert(error.message);
+
+});
 }
 </script>
 </body>
